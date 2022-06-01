@@ -53,14 +53,14 @@ class Campus
 
 
     /**
-     * @return Collection<int, Participant>
+     * @return Collection<int, User>
      */
     public function getListParticipants(): Collection
     {
         return $this->listParticipants;
     }
 
-    public function addListParticipant(Participant $listParticipant): self
+    public function addListParticipant(User $listParticipant): self
     {
         if (!$this->listParticipants->contains($listParticipant)) {
             $this->listParticipants[] = $listParticipant;
@@ -70,7 +70,7 @@ class Campus
         return $this;
     }
 
-    public function removeListParticipant(Participant $listParticipant): self
+    public function removeListParticipant(User $listParticipant): self
     {
         if ($this->listParticipants->removeElement($listParticipant)) {
             // set the owning side to null (unless already changed)
