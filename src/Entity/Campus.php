@@ -26,7 +26,6 @@ class Campus
 
     public function __construct()
     {
-        $this->ManyToOne = new ArrayCollection();
         $this->listParticipants = new ArrayCollection();
         $this->siteOrganisateur = new ArrayCollection();
     }
@@ -48,25 +47,16 @@ class Campus
         return $this;
     }
 
-    /**
-     * @return Collection<int, Participant>
-     */
-    public function getManyToOne(): Collection
-    {
-        return $this->ManyToOne;
-    }
-
-
 
     /**
-     * @return Collection<int, Participant>
+     * @return Collection<int, User>
      */
     public function getListParticipants(): Collection
     {
         return $this->listParticipants;
     }
 
-    public function addListParticipant(Participant $listParticipant): self
+    public function addListParticipant(User $listParticipant): self
     {
         if (!$this->listParticipants->contains($listParticipant)) {
             $this->listParticipants[] = $listParticipant;
@@ -76,7 +66,7 @@ class Campus
         return $this;
     }
 
-    public function removeListParticipant(Participant $listParticipant): self
+    public function removeListParticipant(User $listParticipant): self
     {
         if ($this->listParticipants->removeElement($listParticipant)) {
             // set the owning side to null (unless already changed)
