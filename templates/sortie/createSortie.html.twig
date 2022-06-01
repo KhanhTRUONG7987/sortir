@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+    {# {% form_theme formCreateSortie 'bootstrap_4_layout.html.twig' %} #}
+{% block main %}
+    <div id="wrapper">
+        <h1>Créer une sortie</h1>
+
+        {{ form_start(createSortieForm) }}
+
+
+        {{ form_row(createSortieForm.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
+
+        {{ form_row(createSortieForm.dateHeureDebut) }}
+
+        {{ form_row(createSortieForm.dateLimiteInscription) }}
+
+        {{ form_row(createSortieForm.nbinscriptionsMax) }}
+
+        {{ form_row(createSortieForm.duree) }}
+
+        {{ form_row(createSortieForm.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
+
+
+        {{ form_row(createSortieForm.campus) }}
+
+        {{ form_row(createSortieForm.ville) }}
+
+        {{ form_row(createSortieForm.lieuxSorties) }}
+
+        {{ form_row(createSortieForm.rue) }}
+
+        {{ form_row(createSortieForm.codePostal) }}
+
+        {{ form_row(createSortieForm.latitude) }}
+
+        {{ form_row(createSortieForm.longitude) }}
+
+
+        <button type="submit" class="btn btn-success">Enregistrer</button>
+        <button type="submit" class="btn btn-success">Publier la sortie</button>
+        <button type="submit" class="btn btn-success">Annuler</button>
+
+        {{ form_end(createSortieForm) }}
+
+    </div>
+
+    {# {{ form_widget(form.fixedCharge, { 'type':'number' }) }} #}
+
+{% endblock %}
+
