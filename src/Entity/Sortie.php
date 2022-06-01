@@ -36,7 +36,7 @@ class Sortie
     #[ORM\Column(type: 'string', length: 255)]
     private $etat;
 
-    #[ORM\ManyToMany(targetEntity: Participant::class, mappedBy: 'participants')]
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participants')]
     private $sorties;
 
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'sortieOrganisee')]

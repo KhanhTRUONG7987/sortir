@@ -18,7 +18,7 @@ class Campus
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
-    #[ORM\OneToMany(mappedBy: 'estRattache', targetEntity: Participant::class)]
+    #[ORM\OneToMany(mappedBy: 'estRattache', targetEntity: User::class)]
     private $listParticipants;
 
     #[ORM\OneToMany(mappedBy: 'siteOrganisateur', targetEntity: Sortie::class)]
