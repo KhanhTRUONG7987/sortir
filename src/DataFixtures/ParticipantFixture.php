@@ -42,7 +42,7 @@ class ParticipantFixture extends Fixture
 
     public function addCity(ObjectManager $manager){
 
-        $ville = new Ville();
+        /*$ville = new Ville();
         $ville->setNom("Test")->setCodePostal(35000);
 
         $manager->persist($ville);
@@ -53,7 +53,7 @@ class ParticipantFixture extends Fixture
         $campus->setNom("Test");
 
         $manager->persist($campus);
-        $manager->flush();
+        $manager->flush();*/
 
 
         $campus = $manager->getRepository(Campus::class)->findAll();
