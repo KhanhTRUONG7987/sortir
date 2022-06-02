@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -38,15 +39,16 @@ class MonProfilType extends AbstractType
                 'required' => false
             ])
 
-            ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe :',
-                'required' => false
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Le mot de passe ne correspond pas.',
+                'options' => ['attr' => ['class' => 'password']],
+                'required' => false,
+                'first_options' => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmation du mot de passe'],
             ])
 
-            /*->add('confirmation', PasswordType::class, [
-                'label' => 'confirmation du mot de passe',
-                'required' => false
-            ])*/
+
 
             ->add('estRattache', EntityType::class, [
 

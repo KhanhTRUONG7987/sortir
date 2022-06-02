@@ -16,17 +16,17 @@ class GestionProfilController extends AbstractController
     #[Route('/monprofil', name: 'monprofil')]
     public function gestionProfil(?User $user, UserRepository $userRepository, Request $request): Response
     {
-
-        //$nouveauProfilUser= new User();
-        //$nouveauProfilUser->setPrenom("léa");
-
+        // récupération du User connecté
         $user = $this->getUser();
 
+
+        // Création du formulaire contenant les données de la classe MonProfilType pour obtenir les infos du User connecté
         $nouveauProfilParticipantForm = $this->createForm(MonProfilType::class, $user);
         $nouveauProfilParticipantForm->handleRequest($request);
 
         //traitement du formulaire
         if ($nouveauProfilParticipantForm->isSubmitted() && $nouveauProfilParticipantForm->isValid()) {
+
             if(!$user->getId()){
                 $userRepository->persist($user);
             }
@@ -44,4 +44,6 @@ class GestionProfilController extends AbstractController
         ,
         ]);
     }
+
+
 }
