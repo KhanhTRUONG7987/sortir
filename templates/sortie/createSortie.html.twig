@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-    {# {% form_theme formCreateSortie 'bootstrap_4_layout.html.twig' %} #}
+{#     {% form_theme formCreateSortie 'bootstrap_4_layout.html.twig' %}#}
 
 {% block main %}
 
@@ -39,9 +39,9 @@
             </div>
 
             <div class="col-md-4 g-5 justify-content-between">
-                <button type="submit" class="btn btn-success">Enregistrer</button>
-                <button type="submit" class="btn btn-success">Publier la sortie</button>
-                <button type="submit" class="btn btn-success">Annuler</button>
+                <button type="submit" class="btn btn-warning">Enregistrer</button>
+                <button type="submit" class="btn btn-primary">Publier la sortie</button>
+                <button type="submit" class="btn btn-danger">Annuler</button>
             </div>
         </div>
         {{form_end(createSortieForm)}}

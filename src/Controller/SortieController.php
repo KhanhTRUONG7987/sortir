@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Sortie;
+use App\Form\AfficherSortie;
 use App\Form\CreateSortieType;
 use App\Repository\SortieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,23 +45,32 @@ class SortieController extends AbstractController
         return $this->render('sortie/createSortie.html.twig', [
             "createSortieForm" => $createSortieForm->createView()
         ]);
-        return $this->redirectToRoute('sortie_afficherSortie', ['id'=>$sortie->getId()]);
+//        return $this->redirectToRoute('sortie_afficherSortie', ['id'=>$sortie->getId()]);
     }
 
-    /*#[Route('/sortie', name: 'sortie')]
-    public function index(SortieRepository $sortieRepository): Response
+//    #[Route('/sortie', name: 'sortie')]
+//    public function index(SortieRepository $sortieRepository): Response
+//    {
+//        return $this->render('sortie/index.html.twig', [
+//            'sorties' => $sortieRepository->findAll(),
+//        ]);
+//    }
+
+    #[Route('/sortie/afficherSortie', name: 'sortie_afficherSortie')]
+    public function show(?Sortie $sortie, SortieRepository $sortieRepository, Request $request)
     {
-        return $this->render('sortie/index.html.twig', [
-            'sorties' => $sortieRepository->findAll(),
+        $afficherUneSortie = $this->createForm(AfficherSortie::class, $sortie);
+        $afficherUneSortie->handleRequest($request);
+        $id = 1;
+        $sortie = $sortieRepository->find($id, $lockMode = null, $lockVersion = null);
+
+        //$sorties = $repo->find($id, $lockMode = null, $lockVersion = null);
+
+
+        return $this->render('sortie/afficherUneSortie.html.twig', [
+            'id' => $sortie->getId(),
+            'afficherUneSortie' =>$afficherUneSortie->createView(),
         ]);
-    }*/
 
-    /*#[Route('/sortie/afficherSortie', name: 'sortie_afficherSortie')]
-    public function show(SortieRepository $repo)
-    {
-        $sorties = $repo->find($id, $lockMode = null, $lockVersion = null);
-
-        return $this->render('sortie/afficherUneSortie.html.twig', ['id' => $sortie->getId()]);
-
-    }*/
+    }
 }

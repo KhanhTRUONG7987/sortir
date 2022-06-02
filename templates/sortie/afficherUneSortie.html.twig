@@ -2,7 +2,7 @@
 
 {% block title %}Hello SortieController!{% endblock %}
 
-{% block body %}
+{% block main %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
@@ -14,34 +14,34 @@
     {{ form_start(createSortieForm) }}
 
 
-    {{ form_row(createSortieForm.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
+    {{ form_row(afficherUneSortie.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
 
-    {{ form_row(createSortieForm.dateHeureDebut) }}
+    {{ form_row(afficherUneSortie.dateHeureDebut) }}
 
-    {{ form_row(createSortieForm.dateLimiteInscription) }}
+    {{ form_row(afficherUneSortie.dateLimiteInscription) }}
 
-    {{ form_row(createSortieForm.nbinscriptionsMax) }}
+    {{ form_row(afficherUneSortie.nbinscriptionsMax) }}
 
-    {{ form_row(createSortieForm.duree) }}
+    {{ form_row(afficherUneSortie.duree) }}
 
-    {{ form_row(createSortieForm.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
+    {{ form_row(afficherUneSortie.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
 
 
-    {{ form_row(createSortieForm.campus) }}
+    {{ form_row(afficherUneSortie.campus) }}
 
-    {{ form_row(createSortieForm.ville) }}
+    {{ form_row(afficherUneSortie.ville) }}
 
-    {{ form_row(createSortieForm.lieuxSorties) }}
+    {{ form_row(afficherUneSortie.lieuxSorties) }}
 
-    {{ form_row(createSortieForm.rue) }}
+    {{ form_row(afficherUneSortie.rue) }}
 
-    {{ form_row(createSortieForm.codePostal) }}
+    {{ form_row(afficherUneSortie.codePostal) }}
 
-    {{ form_row(createSortieForm.latitude) }}
+    {{ form_row(afficherUneSortie.latitude) }}
 
-    {{ form_row(createSortieForm.longitude) }}
+    {{ form_row(afficherUneSortie.longitude) }}
 
-    {{ form_end(createSortieForm) }}
+    {{ form_end(afficherUneSortie) }}
 
     <section id="lstUsersInscrits">
         <table>

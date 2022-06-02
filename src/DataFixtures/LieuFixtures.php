@@ -11,8 +11,8 @@ class LieuFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 //        $lieu = new Lieu();
-//        $lieu   ->setNom("Space Laser")
-//                ->setRue("Rue de Gamer")
+//        $lieu   ->setNom("Piscine")
+//                ->setRue("Rue des piscinades")
 //                ->setLatitude(127.56)
 //                ->setLongitude(308.76);
 //

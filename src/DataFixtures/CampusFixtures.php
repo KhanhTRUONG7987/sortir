@@ -12,7 +12,7 @@ class CampusFixtures extends Fixture
     {
         $campus = new Campus();
         $campus->setNom("RENNES");
-//["SAINT-HERBLAIN","CHARTRES DE BRETAGNE", "LA ROCHE SUR YON", "NIORT", "QUIMPER"]
+
 
         $manager->persist($campus);
 
