@@ -22,7 +22,7 @@ class FiltresAccueilType extends AbstractType
                 'class' => Campus::class
             ])
 
-            ->add('motCles', SearchType::class, [
+            ->add('motcles', SearchType::class, [
                 'label' => 'Nom de la sortie contient',
                 'required' => false
 
@@ -37,6 +37,8 @@ class FiltresAccueilType extends AbstractType
 
         ;
     }
+
+
 
     public function configureOptions(OptionsResolver $resolver): void
     {

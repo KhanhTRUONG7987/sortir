@@ -19,27 +19,27 @@ class MonProfilType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => 'Nom',
+                'label' => 'Nom :',
                 'required' => false
             ])
 
             ->add('prenom', TextType::class, [
-                'label' => 'Prenom',
+                'label' => 'Prénom :',
                 'required' => false
             ])
 
             ->add('telephone', TextType::class, [
-                'label' => 'téléphone ',
+                'label' => 'Téléphone :',
                 'required' => false
             ])
 
             ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'Email :',
                 'required' => false
             ])
 
             ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe ',
+                'label' => 'Mot de passe :',
                 'required' => false
             ])
 
@@ -50,7 +50,7 @@ class MonProfilType extends AbstractType
 
             ->add('estRattache', EntityType::class, [
 
-                'label' => 'Campus',
+                'label' => 'Campus :',
                 'choice_label'=> "nom",
                 'class' => Campus::class
             ])
