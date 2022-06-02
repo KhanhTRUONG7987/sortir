@@ -28,7 +28,7 @@ class FiltresAccueilController extends AbstractController
 
 
 
-        return $this->render('filtres_accueil/index.html.twig', [
+        return $this->render(':sortie:home.html.twig', [
             'controller_name' => 'FiltresAccueilController',
         ]);
     }
