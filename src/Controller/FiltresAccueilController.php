@@ -18,17 +18,17 @@ class FiltresAccueilController extends AbstractController
         $searchFilters = new FiltresAccueilModel();
         $form = $this->createForm(FiltresAccueilType::class, $searchFilters);
 
-        if($form->isValid()){
-            $searchFilters = $form->getData();
+//        if($form->isValid()){
+//            $searchFilters = $form->getData();
+//
+//
+//        }
 
 
-        }
 
 
 
-
-
-        return $this->render(':sortie:home.html.twig', [
+        return $this->render('sortie/home.html.twig', [
             'controller_name' => 'FiltresAccueilController',
         ]);
     }
