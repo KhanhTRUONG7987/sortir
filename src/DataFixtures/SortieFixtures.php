@@ -13,26 +13,26 @@ class SortieFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $ville = $manager->getRepository(Ville::class)->findAll();
-        $lieu = $manager->getRepository(Lieu::class)->findAll();
-        $campus = $manager->getRepository(Campus::class)->findAll();
-        $sortie = new Sortie();
-        $sortie ->setNom()
-                ->setDateHeureDebut()
-                ->setDateLimiteInscription()
-                ->setNbinscriptionsMax()
-                ->setDuree()
-                ->setInfosSortie()
-                ->getSortieOrganisee($campus[0])
-                ->getSiteOrganisateur()
-                ->setDateHeureDebut()
-                ->setDateHeureDebut()
-                ->setDateHeureDebut()
-                ->setDateHeureDebut()
-                ->setDateHeureDebut();
-
-        $manager->persist($sortie);
-
-        $manager->flush();
+//        $ville = $manager->getRepository(Ville::class)->findAll();
+//        $lieu = $manager->getRepository(Lieu::class)->findAll();
+//        $campus = $manager->getRepository(Campus::class)->findAll();
+//        $sortie = new Sortie();
+//        $sortie ->setNom()
+//                ->setDateHeureDebut()
+//                ->setDateLimiteInscription()
+//                ->setNbinscriptionsMax()
+//                ->setDuree()
+//                ->setInfosSortie()
+//                ->getSortieOrganisee($campus[0])
+//                ->getSiteOrganisateur()
+//                ->setDateHeureDebut()
+//                ->setDateHeureDebut()
+//                ->setDateHeureDebut()
+//                ->setDateHeureDebut()
+//                ->setDateHeureDebut();
+//
+//        $manager->persist($sortie);
+//
+//        $manager->flush();
     }
 }

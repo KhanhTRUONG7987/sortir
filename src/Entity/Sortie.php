@@ -24,7 +24,7 @@ class Sortie
     #[ORM\Column(type: 'integer')]
     private $duree;
 
-    #[ORM\Column(type: 'date')]
+    #[ORM\Column(type: 'datetime')]
     private $dateLimiteInscription;
 
     #[ORM\Column(type: 'integer')]

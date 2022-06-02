@@ -3,6 +3,61 @@
 {% block title %}Hello SortieController!{% endblock %}
 
 {% block main %}
-    <h1> PAGE D'ACCUEIL</h1>
+    <link rel="stylesheet" href="{{ asset('css/Sortie.css') }}">
+
+    <div id="Header">
+
+        <div id="Date">
+            <p>Date du Jour:  {{"now"|date("d/m/Y") }} </p>
+        </div>
+
+        <div id="prenomParticipant">
+            <p>Participant: {{ app.user.prenom ?? 'Vous n\'etes plus connecté'  }} {{ app.user.nom ?? '...' }} </p>
+        </div>
+    </div>
+
+    <div id="filtre">
+        <h2>filtrer les sortie</h2>
+
+        <div >
+
+        </div>
+
+    </div>
+
+    <div id="lstSorties">
+        <table class="table table-hover">
+            <thead id="child-1">
+                <tr class="table-primary">
+                    <td>Nom de la sortie</td>
+                    <td>Date de la sortie</td>
+                    <td>Clôture</td>
+                    <td>inscrits/place</td>
+                    <td>Etat</td>
+                    <td>Inscrit</td>
+                    <td>Organisateur</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <TBODY>
+                {%for sortie in listSortie%}
+                    <tr class="table-secondary">
+                        <td>{{sortie.nom}}</td>
+                        <td>{{sortie.dateHeureDebut|date("m/d/Y")}}</td>
+                        <td>{{sortie.dateLimiteInscription|date("m/d/Y")}}</td>
+                        <td>{{sortie.nbinscriptionsMax}} / {{sortie.nbinscriptionsMax}}</td>
+                        <td>{{sortie.etat}}</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                {%endfor%}
+            </TBODY>
+        </table>
+    </div>
+
+
+
+
 
 {% endblock %}

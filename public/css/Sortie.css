@@ -1,11 +1,26 @@
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    max-width: 100%;
-    display: block;
+
+/*############################## header #############################*/
+
+#Header{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+#Date{
+    display: flex;
+    justify-content: flex-end;
+}
+#prenomParticipant{
+    display: flex;
+    justify-content: flex-end;
 }
 
-#form-group {
-    display: inline;
+
+
+/*############################## filtre #############################*/
+
+#filtre{
+    min-height: 200px;
+
 }
+

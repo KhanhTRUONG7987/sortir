@@ -10,9 +10,4 @@ class FiltresAccueilModel
     public $motCles;
     public $dateHeureDebut;
     public $dateLimiteInscription;
-
-
-
-
-
 }
