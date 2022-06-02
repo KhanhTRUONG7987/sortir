@@ -39,6 +39,10 @@ class SortieRepository extends ServiceEntityRepository
         }
     }
 
+    /*public function findSorties($searchFilters){
+        $qb =$this->createQueryBuilder()
+    }
+
 //    /**
 //     * @return Sortie[] Returns an array of Sortie objects
 //     */
