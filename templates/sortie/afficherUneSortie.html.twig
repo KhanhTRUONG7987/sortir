@@ -11,7 +11,7 @@
 <div class="example-wrapper">
     <h1>Afficher une sortie</h1>
 
-    {{ form_start(createSortieForm) }}
+    {{ form_start(afficherUneSortie) }}
 
 
     {{ form_row(afficherUneSortie.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
@@ -20,7 +20,7 @@
 
     {{ form_row(afficherUneSortie.dateLimiteInscription) }}
 
-    {{ form_row(afficherUneSortie.nbinscriptionsMax) }}
+{#    {{ form_row(afficherUneSortie.) }} nombre de perssonne max#}
 
     {{ form_row(afficherUneSortie.duree) }}
 
@@ -29,7 +29,7 @@
 
     {{ form_row(afficherUneSortie.campus) }}
 
-    {{ form_row(afficherUneSortie.ville) }}
+{#    {{ form_row(afficherUneSortie.ville) }}#}
 
     {{ form_row(afficherUneSortie.lieuxSorties) }}
 
