@@ -10,14 +10,14 @@ class LieuFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $lieu = new Lieu();
-        $lieu   ->setNom("Space Laser")
-                ->setRue("Rue de Gamer")
-                ->setLatitude(127.56)
-                ->setLongitude(308.76);
-
-        $manager->persist($lieu);
-
-        $manager->flush();
+//        $lieu = new Lieu();
+//        $lieu   ->setNom("Space Laser")
+//                ->setRue("Rue de Gamer")
+//                ->setLatitude(127.56)
+//                ->setLongitude(308.76);
+//
+//        $manager->persist($lieu);
+//
+//        $manager->flush();
     }
 }

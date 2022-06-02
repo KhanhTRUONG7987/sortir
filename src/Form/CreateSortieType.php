@@ -31,8 +31,9 @@ class CreateSortieType extends AbstractType
                 'class' => Ville::class, 'choice_label' => 'nom', 'mapped'=>false
             ])
             ->add('lieuxSorties')
+
             ->add('rue',EntityType::class, [
-                'class' => Campus::class, 'choice_label' => 'rue', 'mapped'=>false
+                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped'=>false
             ])
 
             ->add('codePostal',EntityType::class, [
