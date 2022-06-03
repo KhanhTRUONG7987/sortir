@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <br>
+    <div class="container">
+        {{ form_start(modifierUneSortie) }}
+        <div class="entry-title" style="color: #0d5470">
+            <h1>Modifier une sortie</h1>
+        </div>
+        <br><br>
+
+        <div class="row g-3 aligncenter">
+            <div class="col">
+                {{ form_row(modifierUneSortie.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.campus) }}
+            </div>
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(modifierUneSortie.dateHeureDebut) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.ville) }}
+            </div>
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(modifierUneSortie.dateLimiteInscription) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.lieuxSorties) }}
+            </div>
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(modifierUneSortie.nbinscriptionsMax) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.rue) }}
+            </div>
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(modifierUneSortie.duree) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.codePostal) }}
+            </div>
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(modifierUneSortie.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.latitude) }}
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col">
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.longitude) }}
+            </div>
+        </div>
+        <br><br><br><br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(modifierUneSortie.Enregistrer) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.Publier) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.Supprimer) }}
+            </div>
+            <div class="col">
+                {{ form_row(modifierUneSortie.Annuler) }}
+            </div>
+        </div>
+        {{ form_end(modifierUneSortie) }}
+    </div>
+{% endblock %}
+
+
+
