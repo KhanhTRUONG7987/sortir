@@ -6,6 +6,7 @@ use App\Entity\Sortie;
 use App\Entity\Ville;
 use App\Entity\Campus;
 use App\Entity\Lieu;
+use Doctrine\DBAL\Types\DateType;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -19,8 +20,14 @@ class CreateSortieType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('dateHeureDebut')
-            ->add('dateLimiteInscription')
+            ->add('dateHeureDebut', /*DateType::class,[
+                'label' => 'Date et heaure de la sortie',
+                'widget' => 'single_text',
+            ]*/)
+            ->add('dateLimiteInscription', /*DateType::class,[
+                'label' => 'Date limite d\'inscription',
+                'widget' => 'single_text',
+            ]*/)
             ->add('nbinscriptionsMax')
             ->add('duree')
             ->add('infosSortie')

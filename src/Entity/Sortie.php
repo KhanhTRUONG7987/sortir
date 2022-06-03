@@ -51,7 +51,10 @@ class Sortie
     #[ORM\JoinColumn(nullable: false)]
     private $etatSorties;
 
-
+    public function __construct()
+    {
+        $this->sorties = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -143,30 +146,11 @@ class Sortie
     }
 
     /**
-     * @return Collection<int, Participant>
+     * @return Collection<int, User>
      */
     public function getSorties(): Collection
     {
         return $this->sorties;
-    }
-
-    public function addSorty(Participant $sorty): self
-    {
-        if (!$this->sorties->contains($sorty)) {
-            $this->sorties[] = $sorty;
-            $sorty->addParticipant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSorty(Participant $sorty): self
-    {
-        if ($this->sorties->removeElement($sorty)) {
-            $sorty->removeParticipant($this);
-        }
-
-        return $this;
     }
 
     public function getSortieOrganisee(): ?Campus
@@ -204,9 +188,4 @@ class Sortie
 
         return $this;
     }
-
-
-
-
-
 }

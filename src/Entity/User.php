@@ -46,9 +46,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private $estRattache;
 
-
-
-
     //#################################################
 
 
@@ -210,6 +207,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     //##################################################
-
-
 }
