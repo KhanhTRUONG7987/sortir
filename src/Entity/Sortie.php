@@ -51,10 +51,7 @@ class Sortie
     #[ORM\JoinColumn(nullable: false)]
     private $etatSorties;
 
-    public function __construct()
-    {
-        $this->sorties = new ArrayCollection();
-    }
+
 
     public function getId(): ?int
     {
@@ -207,4 +204,9 @@ class Sortie
 
         return $this;
     }
+
+
+
+
+
 }

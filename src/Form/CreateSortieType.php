@@ -9,6 +9,7 @@ use App\Entity\Lieu;
 use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -49,6 +50,12 @@ class CreateSortieType extends AbstractType
             ->add('longitude',EntityType::class, [
                 'class' => Lieu::class, 'choice_label' => 'longitude', 'mapped'=>false
             ])
+
+            ->add('Enregistrer', SubmitType::class)
+
+            ->add('Publier', SubmitType::class)
+
+            ->add('Annuler', SubmitType::class)
         ;
     }
 
