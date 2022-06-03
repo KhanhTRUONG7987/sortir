@@ -14,17 +14,17 @@
     {{ form_start(afficherUneSortie) }}
 
 
-    {{ form_row(afficherUneSortie.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
+    {{ form_row(afficherUneSortie.nom)}}
 
     {{ form_row(afficherUneSortie.dateHeureDebut) }}
 
     {{ form_row(afficherUneSortie.dateLimiteInscription) }}
 
-{#    {{ form_row(afficherUneSortie.) }} nombre de perssonne max#}
+    {{ form_row(afficherUneSortie.nbinscriptionsMax) }}
 
     {{ form_row(afficherUneSortie.duree) }}
 
-    {{ form_row(afficherUneSortie.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
+    {{ form_row(afficherUneSortie.infosSortie)}}
 
 
     {{ form_row(afficherUneSortie.campus) }}

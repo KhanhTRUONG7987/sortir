@@ -25,17 +25,17 @@ class AfficherSortie extends AbstractType
             ])
 
             ->add('dateHeureDebut', TextType::class, [
-                'label' => 'dateHeureDebut :',
+                'label' => 'date et Heure de la Sortie :',
                 'required' => false
             ])
 
             ->add('dateLimiteInscription', TextType::class, [
-                'label' => 'dateLimiteInscription :',
+                'label' => 'date Limite d\'Inscription :',
                 'required' => false
             ])
 
-            ->add('inscriptionsMax', TextType::class, [
-                'label' => 'inscriptionsMax :',
+            ->add('nbinscriptionsMax', TextType::class, [
+                'label' => 'inscriptions Max :',
                 'required' => false
             ])
 
@@ -72,26 +72,13 @@ class AfficherSortie extends AbstractType
                 'required' => false
             ])
 
-            /*->add('confirmation', PasswordType::class, [
-                'label' => 'confirmation du mot de passe',
-                'required' => false
-            ])*/
-
             ->add('estRattache', EntityType::class, [
-
                 'label' => 'Campus :',
                 'choice_label'=> "nom",
                 'class' => Campus::class
             ])
-
-
-
         ;
-
     }
-
-
-
 
     public function configureOptions(OptionsResolver $resolver): void
         {
