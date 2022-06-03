@@ -30,11 +30,10 @@ class FiltresAccueilController extends AbstractController
         //######################## recuperer List de sortie ##################################
 
         $listSortie = $sortieRepository->findAll();
-        $number = 0;
+
         return $this->render('sortie/home.html.twig', [
             'controller_name' => 'FiltresAccueilController',
             'listSortie' => $listSortie,
-            'number' => $number,
         ]);
     }
 }

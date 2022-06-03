@@ -48,29 +48,24 @@ class SortieController extends AbstractController
 //        return $this->redirectToRoute('sortie_afficherSortie', ['id'=>$sortie->getId()]);
     }
 
-//    #[Route('/sortie', name: 'sortie')]
-//    public function index(SortieRepository $sortieRepository): Response
-//    {
-//        return $this->render('sortie/index.html.twig', [
-//            'sorties' => $sortieRepository->findAll(),
-//        ]);
-//    }
 
-    #[Route('/sortie/afficherSortie', name: 'sortie_afficherSortie')]
-    public function show(?Sortie $sortie, SortieRepository $sortieRepository, Request $request)
+
+    #[Route('/sortie/afficherSortie/{id}', name: 'sortie_afficherSortie')]
+    public function show($id, SortieRepository $sortieRepository, Request $request, )
     {
+        $sortie = $sortieRepository->find($id);
         $afficherUneSortie = $this->createForm(AfficherSortie::class, $sortie);
         $afficherUneSortie->handleRequest($request);
-        $id = 1;
-        $sortie = $sortieRepository->find($id, $lockMode = null, $lockVersion = null);
-
-        //$sorties = $repo->find($id, $lockMode = null, $lockVersion = null);
 
 
-        return $this->render('sortie/afficherUneSortie.html.twig', [
-            'id' => $sortie->getId(),
+        return $this->redirectToRoute('sortie_afficherSortie', [
+            'id' => $sortie,
             'afficherUneSortie' =>$afficherUneSortie->createView(),
         ]);
+//        return $this->render('sortie/afficherUneSortie.html.twig', [
+//            'id' => $sortie,
+//            'afficherUneSortie' =>$afficherUneSortie->createView(),
+//        ]);
 
     }
 }

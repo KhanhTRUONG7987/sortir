@@ -53,8 +53,11 @@
                         <td>{{sortie.nbinscriptionsMax}} / {{sortie.nbinscriptionsMax}}</td>
                         <td>{{sortie.etat}}</td>
                         <td>...</td>
-                        <td>...</td>
-                        <td><a href="{{ path('sortie_afficherSortie') }}">Afficher</a></td>
+                        <td>{{sortie.id}}</td>
+                        <td>
+                            <a href="{{ path('sortie_afficherSortie', {'id': sortie.id}) }}" >Afficher</a>
+{#                            <a onclick="sho" >Afficher</a>#}
+                        </td>
                     </tr>
                 {%endfor%}
             </TBODY>
