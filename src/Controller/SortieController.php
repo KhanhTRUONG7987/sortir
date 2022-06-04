@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Sortie;
-use App\Form\AfficherSortieType;
+use App\Entity\User;
+use App\Entity\Lieu;
 use App\Form\AnnulerSortieType;
 use App\Form\CreateSortieType;
 use App\Form\ModifierSortieType;
@@ -13,14 +14,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/sortie')]
 class SortieController extends AbstractController
 {
-    #[Route('/sortie/createSortie', name: 'sortie_createSortie')]
+    #[Route('/createSortie', name: 'sortie_createSortie', methods: ['GET', 'POST'])]
     public function createSortie(Request $request, SortieRepository $sortieRepository): Response
     {
         $sortie = new Sortie();
-        /*$sortie ->setOrganisateur($this->getUser())
-                ->setLieuxSorties($this->get())
+        //$sortie ->setOrganiser($this->);
+
+                /*->setLieuxSorties($this->get)
                 ->setEtat($this->getSortie())
                 ->setSortieOrganisee($this->getSortie())
                 ->setEtatSorties($this->getEtat());*/
@@ -32,8 +35,6 @@ class SortieController extends AbstractController
 
         if ($createSortieForm->isSubmitted() && $createSortieForm->isValid())
         {
-            //dump($sortie)
-            //EntityManager
             $sortieRepository->add($sortie, true);
 
             $this->addFlash('success', 'Sortie créée');
@@ -42,7 +43,7 @@ class SortieController extends AbstractController
         }
         //response
         return $this->render('sortie/createSortie.html.twig', [
-            /*'sortie' => $sortie,*/
+            'sortie' => $sortie,
             "createSortieForm" => $createSortieForm->createView(),
         ]);
     }
@@ -55,26 +56,19 @@ class SortieController extends AbstractController
 //        ]);
 //    }
 
-    #[Route('/sortie/afficherSortie/{id}', name: 'sortie_afficherSortie')]
-    public function afficher($id, SortieRepository $sortieRepository, Request $request)
+    #[Route('/afficherSortie/{id}', name: 'sortie_afficherSortie')]
+    public function afficher($id, SortieRepository $sortieRepository):Response
     {
         $sortie = $sortieRepository->find($id);
-        $afficherUneSortie = $this->createForm(AfficherSortieType::class, $sortie);
-        $afficherUneSortie->handleRequest($request);
 
-        return $this->redirectToRoute('sortie_afficherSortie', [
+        return $this->render('sortie/afficherUneSortie.html.twig', [
             'id' => $sortie,
-            'afficherUneSortie' => $afficherUneSortie->createView(),
+            'sortie' => $sortie,
         ]);
     }
-//        return $this->render('sortie/afficherUneSortie.html.twig', [
-//            'id' => $sortie,
-//            'afficherUneSortie' =>$afficherUneSortie->createView(),
-//        ]);
 
-
-    #[Route('/sortie/modifierSortie/{id}', name: 'sortie_modifierSortie')]
-    public function modifier(int $id, SortieRepository $sortieRepository, Request $request)
+    #[Route('/modifierSortie/{id}', name: 'sortie_modifierSortie')]
+    public function modifier($id, SortieRepository $sortieRepository, Request $request)
     {
         $sortie = $sortieRepository->find($id);
         $modifierUneSortie = $this->createForm(ModifierSortieType::class, $sortie);
@@ -94,20 +88,24 @@ class SortieController extends AbstractController
 
     }
 
-    #[Route('/sortie/annulerSortie/{id}', name: 'sortie_annulerSortie')]
-    public function annuler(Sortie $sortie, SortieRepository $sortieRepository, Request $request)
+    #[Route('/annulerSortie/{id}', name: 'sortie_annulerSortie')]
+    public function annuler(Request $request, Sortie $sortie, SortieRepository $sortieRepository)
     {
         $annulerUneSortie = $this->createForm(AnnulerSortieType::class, $sortie);
         $annulerUneSortie->handleRequest($request);
 
-        if ($annulerUneSortie->isSubmitted() && $annulerUneSortie->isValid() && $this->isCsrfTokenValid('delate', $sortie->getId(), $request->request->get('token'))) {
+        if ($annulerUneSortie->isSubmitted() && $annulerUneSortie->isValid()) {
 
             $sortieRepository->remove($sortie, true);
 
             //message
             $this->addFlash('success', 'Sortie annulée');
+            return $this->redirect($this->generateUrl('home'));
         }
-        return $this->redirect($this->generateUrl('home'));
+        return $this->render('sortie/annulerUneSortie.html.twig', [
+            'id' => $sortie,
+            'annulerUneSortie' => $annulerUneSortie->createView(),
+        ]);
 
     }
 }
