@@ -48,6 +48,7 @@ class Sortie
     #[ORM\JoinColumn(nullable: false)]
     private $etatSorties;
 
+
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'Sortie')]
     #[ORM\JoinColumn(nullable: false)]
     private $organisateur;
