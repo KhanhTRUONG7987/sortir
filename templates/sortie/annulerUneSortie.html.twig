@@ -9,10 +9,10 @@
 <div class="example-wrapper">
     <h1>Annuler une sortie</h1>
 
-    {{ form_start(annulerUneSortierUneSortie) }}
+    {{ form_start(annulerUneSortie) }}
 
 
-    {{ form_row(annulerUneSortieUneSortie.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
+    {{ form_row(annulerUneSortie.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
 
     {{ form_row(annulerUneSortie.dateHeureDebut) }}
 
@@ -28,11 +28,11 @@
             {{ form_row(annulerUneSortie.Enregistrer) }}
         </div>
         <div class="col">
-            {{ form_row(annulerUneSortie.Enregistrer) }}
+            {{ form_row(annulerUneSortie.Annuler) }}
         </div>
     </div>
 
-    {{ form_end(annulerUneSortieUneSortie) }}
+    {{ form_end(annulerUneSortie) }}
 </div>
 
 {% endblock %}

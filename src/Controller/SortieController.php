@@ -34,8 +34,10 @@ class SortieController extends AbstractController
         $createSortieForm = $this->createForm(CreateSortieType::class, $sortie);
         $createSortieForm->handleRequest($request);
 
-        if ($createSortieForm->isSubmitted() && $createSortieForm->isValid()) {
+        if ($createSortieForm->isSubmitted() && $createSortieForm->isValid())
+        {
             $sortieRepository->add($sortie, true);
+
             $this->addFlash('success', 'Sortie créée');
 
             return $this->redirect($this->generateUrl('home'));
@@ -56,7 +58,7 @@ class SortieController extends AbstractController
 //    }
 
     #[Route('/afficherSortie/{id}', name: 'sortie_afficherSortie')]
-    public function afficher($id, SortieRepository $sortieRepository, Request $request): Response
+    public function afficher($id, SortieRepository $sortieRepository, Request $request):Response
     {
         $sortie = $sortieRepository->find($id);
         $afficherUneSortie = $this->createForm(AfficherSortieType::class, $sortie);

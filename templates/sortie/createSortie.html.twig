@@ -8,14 +8,14 @@
         <div class="entry-title" style="color: #0d5470">
             <h1>Créer une sortie</h1>
         </div>
-        <br><br>
+        <br>
 
         <div class="row g-3 aligncenter">
             <div class="col">
                 {{ form_row(createSortieForm.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
             </div>
             <div class="col">
-                {{ form_row(createSortieForm.campus) }}
+                {{ form_row(createSortieForm.campus, {'attr': {'placeholder': "Campus"}}) }}
             </div>
         </div>
         <br>
@@ -38,7 +38,8 @@
                         {{ form_row(createSortieForm.lieuxSorties) }}
                     </div>
                     <div class="col">
-                        <a href="{{ path('lieu_index') }}" ><img class="imgButton" src="{{ asset('img/plusButton.png') }}"></a>
+                        <a href="{{ path('lieu_index') }}"><img class="imgButton"
+                                                                src="{{ asset('img/plusButton.png') }}"></a>
                     </div>
                 </div>
             </div>
@@ -76,18 +77,19 @@
                 {{ form_row(createSortieForm.longitude) }}
             </div>
         </div>
-        <br><br><br><br>
-        <div class="row g-3">
-            <div class="col">
+        <br><br>
+        <div class="row g-3 container-fluid">
+            <div class="col" button button1>
                 {{ form_row(createSortieForm.Enregistrer) }}
             </div>
-            <div class="col">
+            <div class="col" button button2>
                 {{ form_row(createSortieForm.Publier) }}
             </div>
-            <div class="col">
+            <div class="col" button button3>
                 {{ form_row(createSortieForm.Annuler) }}
             </div>
         </div>
+        <br><br>
         {{ form_end(createSortieForm) }}
     </div>
 {% endblock %}

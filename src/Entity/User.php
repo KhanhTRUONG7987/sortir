@@ -48,13 +48,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private $estRattache;
 
-    #[ORM\OneToMany(mappedBy: 'organisateur', targetEntity: Sortie::class)]
-    private $Sortie;
+    #[ORM\OneToMany(mappedBy: 'organiser', targetEntity: Sortie::class)]
+    private $sortiesOrganisees;
 
     public function __construct()
     {
-        $this->Sortie = new ArrayCollection();
+        $this->sortiesOrganisees = new ArrayCollection();
     }
+
 
     //#################################################
 
@@ -102,8 +103,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[0] = 'ROLE_USER';
-        $roles[1] = 'ROLE_ADMIN';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -222,30 +222,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Sortie>
      */
-    public function getSortie(): Collection
+    public function getSortiesOrganisees(): Collection
     {
-        return $this->Sortie;
+        return $this->sortiesOrganisees;
     }
 
-    public function addSortie(Sortie $sortie): self
+    public function addSortiesOrganisee(Sortie $sortiesOrganisee): self
     {
-        if (!$this->Sortie->contains($sortie)) {
-            $this->Sortie[] = $sortie;
-            $sortie->setOrganisateur($this);
+        if (!$this->sortiesOrganisees->contains($sortiesOrganisee)) {
+            $this->sortiesOrganisees[] = $sortiesOrganisee;
+            $sortiesOrganisee->setOrganiser($this);
         }
 
         return $this;
     }
 
-    public function removeSortie(Sortie $sortie): self
+    public function removeSortiesOrganisee(Sortie $sortiesOrganisee): self
     {
-        if ($this->Sortie->removeElement($sortie)) {
+        if ($this->sortiesOrganisees->removeElement($sortiesOrganisee)) {
             // set the owning side to null (unless already changed)
-            if ($sortie->getOrganisateur() === $this) {
-                $sortie->setOrganisateur(null);
+            if ($sortiesOrganisee->getOrganiser() === $this) {
+                $sortiesOrganisee->setOrganiser(null);
             }
         }
 
         return $this;
     }
+
+
 }

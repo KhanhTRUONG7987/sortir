@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 use App\Entity\Sortie;
-use App\Entity\User;
 use App\Form\FiltresAccueilType;
 use App\Form\Model\FiltresAccueilModel;
 use App\Repository\SortieRepository;
@@ -23,26 +22,18 @@ class FiltresAccueilController extends AbstractController
 
         $searchFilters = new FiltresAccueilModel();
         $form = $this->createForm(FiltresAccueilType::class, $searchFilters);
-                /*if($form->isValid()){
-                    $searchFilters = $form->getData();
-                }*/
+        /*if($form->isValid()){
+            $searchFilters = $form->getData();
+        }*/
 
 
         //######################## recuperer List de sortie ##################################
 
         $listSortie = $sortieRepository->findAll();
-
-        //##################### recuperer roles du User #####################################
-
-        $roleUser = $this->getUser()->getRoles();
-        //$roleUser = $user->getRoles();
-        $roleUser = implode(",", $roleUser);
-
-
+        dump($listSortie);
         return $this->render('sortie/home.html.twig', [
             'controller_name' => 'FiltresAccueilController',
-            'listSortie' => $listSortie,
-            'roleUser' => $roleUser,
+            'listSortie' => [] //$listSortie,
         ]);
     }
 }

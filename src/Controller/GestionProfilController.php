@@ -41,7 +41,7 @@ class GestionProfilController extends AbstractController
 
         return $this->render('gestion_profil/gestionProfil.html.twig', [
             'nouveauProfilParticipantForm' =>$nouveauProfilParticipantForm->createView()
-        ,
+            ,
         ]);
     }
 

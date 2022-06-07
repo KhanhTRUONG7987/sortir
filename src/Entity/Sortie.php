@@ -36,9 +36,6 @@ class Sortie
     #[ORM\Column(type: 'string', length: 255)]
     private $etat;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participants')]
-    private $sorties;
-
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'sortieOrganisee')]
     #[ORM\JoinColumn(nullable: false)]
     private $sortieOrganisee;
@@ -55,10 +52,11 @@ class Sortie
     #[ORM\JoinColumn(nullable: false)]
     private $organisateur;
 
-    public function __construct()
-    {
-        $this->sorties = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'sortiesOrganisees')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $organiser;
+
+
 
     public function getId(): ?int
     {
@@ -204,4 +202,18 @@ class Sortie
 
         return $this;
     }
+
+    public function getOrganiser(): ?User
+    {
+        return $this->organiser;
+    }
+
+    public function setOrganiser(?User $organiser): self
+    {
+        $this->organiser = $organiser;
+
+        return $this;
+    }
+
+
 }

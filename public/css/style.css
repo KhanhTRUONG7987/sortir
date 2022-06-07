@@ -1,9 +1,44 @@
-.imgButton{
-    max-width: 28%;
-    max-height: 28%;
+.imgButton {
+    max-width: 30%;
+    max-height: 30%;
 }
 
-*{
+:root {
+    --primary-color: #014982;
+    --secondary-color: #0182E9;
+    --third-color: #6CB4ED;
+    --text-1: #ffffff;
+    --text-color: #fefefe;
+    --text-form: #0182E9;
+
+}
+
+* {
     margin: 0;
     padding: 0;
+}
+
+.form-control {
+    color: var(--text-form);
+}
+
+button {
+    color: var(--text-1) !important;
+}
+
+.button1 {
+    background-color: var(--primary-color);
+}
+
+.button2 {
+    background-color: var(--secondary-color);
+}
+
+.button3 {
+    background-color: var(--third-color);
+}
+
+h1 {
+    color: var(--text-form);
+    text-align: center;
 }
