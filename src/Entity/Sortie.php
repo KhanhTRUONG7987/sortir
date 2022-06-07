@@ -51,6 +51,10 @@ class Sortie
     #[ORM\JoinColumn(nullable: false)]
     private $etatSorties;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'Sortie')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $organisateur;
+
     public function __construct()
     {
         $this->sorties = new ArrayCollection();
@@ -185,6 +189,18 @@ class Sortie
     public function setEtatSorties(?Etat $etatSorties): self
     {
         $this->etatSorties = $etatSorties;
+
+        return $this;
+    }
+
+    public function getOrganisateur(): ?User
+    {
+        return $this->organisateur;
+    }
+
+    public function setOrganisateur(?User $organisateur): self
+    {
+        $this->organisateur = $organisateur;
 
         return $this;
     }

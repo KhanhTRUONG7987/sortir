@@ -20,49 +20,81 @@ class CreateSortieType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('dateHeureDebut', /*DateType::class,[
-                'label' => 'Date et heaure de la sortie',
-                'widget' => 'single_text',
-            ]*/)
+
+            ->add('dateHeureDebut')
+
             ->add('dateLimiteInscription', /*DateType::class,[
                 'label' => 'Date limite d\'inscription',
                 'widget' => 'single_text',
             ]*/)
+
             ->add('nbinscriptionsMax')
             ->add('duree')
             ->add('infosSortie')
 
             ->add('campus',EntityType::class, [
-                'class' => Campus::class, 'choice_label' => 'nom', 'mapped'=>false
+                'class' => Campus::class, 'choice_label' => 'nom', 'mapped'=>false,
+                'attr' => [
+                    'class' => 'form-control',
+                ]
             ])
             ->add('ville',EntityType::class, [
-                'class' => Ville::class, 'choice_label' => 'nom', 'mapped'=>false
+                'class' => Ville::class, 'choice_label' => 'nom', 'mapped'=>false,
+                'attr' => [
+                    'class' => 'form-control',
+                ]
             ])
             ->add('lieuxSorties',EntityType::class, [
-                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped'=>false
+                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped'=>false,
+                'attr' => [
+                    'class' => 'form-control',
+                ]
             ])
 
             ->add('rue',EntityType::class, [
-                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped'=>false
+                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped'=>false,
+                'attr' => [
+                    'class' => 'form-control',
+                ]
             ])
 
             ->add('codePostal',EntityType::class, [
-                'class' => Ville::class, 'choice_label' => 'codePostal', 'mapped'=>false
+                'class' => Ville::class, 'choice_label' => 'codePostal', 'mapped'=>false,
+                'attr' => [
+                    'class' => 'form-control',
+                ]
             ])
 
             ->add('latitude',EntityType::class, [
-                'class' => Lieu::class, 'choice_label' => 'latitude', 'mapped'=>false
+                'class' => Lieu::class, 'choice_label' => 'latitude', 'mapped'=>false,
+                'attr' => [
+                    'class' => 'form-control',
+                ]
             ])
 
             ->add('longitude',EntityType::class, [
-                'class' => Lieu::class, 'choice_label' => 'longitude', 'mapped'=>false
+                'class' => Lieu::class, 'choice_label' => 'longitude', 'mapped'=>false,
+                'attr' => [
+                    'class' => 'form-control',
+                ]
             ])
 
-            ->add('Enregistrer', SubmitType::class)
+            ->add('Enregistrer', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ]
+            ])
 
-            ->add('Publier', SubmitType::class)
+            ->add('Publier', SubmitType::class,['attr' => [
+                'class' => 'btn btn-success',
+            ]
+            ])
 
-            ->add('Annuler', SubmitType::class)
+            ->add('Annuler', SubmitType::class,[
+                'attr' => [
+                    'class' => 'btn btn-warning',
+                ]
+            ])
         ;
     }
 
