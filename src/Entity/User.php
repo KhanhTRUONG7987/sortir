@@ -48,6 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private $estRattache;
 
+
     #[ORM\OneToMany(mappedBy: 'organisateur', targetEntity: Sortie::class)]
     private $Sortie;
 
