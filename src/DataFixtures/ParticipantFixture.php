@@ -40,6 +40,7 @@ class ParticipantFixture extends Fixture
         $user->setTelephone('0687789856');
         $user->setActif(true);
         $user->setEstRattache($campus[0]);
+        $user->setRoles((array)'ROLE_ADMIN');
 
         $manager->persist($user);
         $manager->flush();

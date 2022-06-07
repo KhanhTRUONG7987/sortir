@@ -6,6 +6,7 @@ use App\Entity\Sortie;
 use App\Form\AfficherSortie;
 use App\Form\CreateSortieType;
 use App\Repository\SortieRepository;
+use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,11 +62,7 @@ class SortieController extends AbstractController
         return $this->redirectToRoute('sortie_afficherSortie', [
             'id' => $sortie,
             'afficherUneSortie' =>$afficherUneSortie->createView(),
-        ]);
-//        return $this->render('sortie/afficherUneSortie.html.twig', [
-//            'id' => $sortie,
-//            'afficherUneSortie' =>$afficherUneSortie->createView(),
-//        ]);
 
+        ]);
     }
 }
