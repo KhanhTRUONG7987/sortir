@@ -30,7 +30,7 @@
                     <div class="collapse navbar-collapse" id="navbarColor01">
                         <ul class="navbar-nav me-auto">
 
-                            {%if roleUser == 'ROLE_ADMIN'  %}
+{#                            {%if app.user.roles != 'ROLE_ADMIN'  %}#}
                             <li class="nav-item">
                                 <a class="nav-link active" href="#">Villes
                                     <span class="visually-hidden">(current)</span>
@@ -40,7 +40,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Campus</a>
                             </li>
-                            {% endif %}
+{#                            {% endif %}#}
 
 
                             <li class="nav-item">
@@ -56,7 +56,6 @@
                             </li>
 
                         </ul>
-
                     </div>
                 </div>
             </nav>

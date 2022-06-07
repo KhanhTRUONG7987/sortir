@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Sortie;
 use App\Form\AfficherSortie;
+use App\Form\AfficherSortieType;
 use App\Form\CreateSortieType;
 use App\Repository\SortieRepository;
 use http\Client\Curl\User;
@@ -55,7 +56,7 @@ class SortieController extends AbstractController
     public function show($id, SortieRepository $sortieRepository, Request $request, )
     {
         $sortie = $sortieRepository->find($id);
-        $afficherUneSortie = $this->createForm(AfficherSortie::class, $sortie);
+        $afficherUneSortie = $this->createForm(AfficherSortieType::class, $sortie);
         $afficherUneSortie->handleRequest($request);
 
 

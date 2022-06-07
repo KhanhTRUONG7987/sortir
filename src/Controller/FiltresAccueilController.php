@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+use App\Entity\Sortie;
 use App\Entity\User;
 use App\Form\FiltresAccueilType;
 use App\Form\Model\FiltresAccueilModel;
