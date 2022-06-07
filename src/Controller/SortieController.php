@@ -8,6 +8,7 @@ use App\Form\AfficherSortieType;
 use App\Form\CreateSortieType;
 use App\Repository\SortieRepository;
 use http\Client\Curl\User;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,31 +24,30 @@ use Symfony\Component\Form\Extension\Core\DataTransformer\NumberToLocalizedStrin
 use Symfony\Component\Form\Extension\Core\DataTransformer\StringToFloatTransformer;
 
 
+
 class SortieController extends AbstractController
 {
     #[Route('/sortie/createSortie', name: 'sortie_createSortie')]
-    public function createSortie(Request $request): Response
+    public function createSortie(Request $request, SortieRepository $sortieRepository): Response
     {
         $sortie = new Sortie();
 
         //formular
         $createSortieForm = $this->createForm(CreateSortieType::class, $sortie);
         $createSortieForm->handleRequest($request);
-
-        /*if ($createSortieForm->isSubmitted() && $createSortieForm->isValid()){
-            //faire qqchose avec les données
-            //dump($sortie)
-            EntityManager
-            $em = $this->getDoctrine()->getManager();
-            $em->flush();
-
-            $this->addFlash('success','Sortie créée');
-        }*/
+//
+//        if ($createSortieForm->isSubmitted() && $createSortieForm->isValid()){
+//
+//            $responce = This::class->$createSortieForm;
+//            $sortieRepository->add( $responce );
+//
+//            $this->addFlash('success','Sortie créée');
+//            return $this->redirectToRoute('home');
+//        }
         //response
         return $this->render('sortie/createSortie.html.twig', [
             "createSortieForm" => $createSortieForm->createView()
         ]);
-//        return $this->redirectToRoute('sortie_afficherSortie', ['id'=>$sortie->getId()]);
     }
 
 
