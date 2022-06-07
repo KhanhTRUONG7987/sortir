@@ -2,32 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\Sortie;
-use App\Entity\Ville;
 use App\Entity\Campus;
 use App\Entity\Lieu;
-use Doctrine\DBAL\Types\DateType;
-use Doctrine\ORM\Mapping\Entity;
+use App\Entity\Sortie;
+use App\Entity\Ville;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CreateSortieType extends AbstractType
+class ModifierSortieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('nom')
-            ->add('dateHeureDebut', /*DateType::class,[
-                'label' => 'Date et heaure de la sortie',
-                'widget' => 'single_text',
-            ]*/)
-            ->add('dateLimiteInscription', /*DateType::class,[
-                'label' => 'Date limite d\'inscription',
-                'widget' => 'single_text',
-            ]*/)
+            ->add('dateHeureDebut')
+            ->add('dateLimiteInscription')
             ->add('nbinscriptionsMax')
             ->add('duree')
             ->add('infosSortie')
@@ -61,6 +53,8 @@ class CreateSortieType extends AbstractType
             ->add('Enregistrer', SubmitType::class)
 
             ->add('Publier', SubmitType::class)
+
+            ->add('Supprimer', SubmitType::class)
 
             ->add('Annuler', SubmitType::class)
         ;

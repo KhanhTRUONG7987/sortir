@@ -26,6 +26,7 @@ class Campus
 
     public function __construct()
     {
+        $this->ManyToOne = new ArrayCollection();
         $this->listParticipants = new ArrayCollection();
         $this->siteOrganisateur = new ArrayCollection();
     }
@@ -46,6 +47,15 @@ class Campus
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getManyToOne(): Collection
+    {
+        return $this->ManyToOne;
+    }
+
 
 
     /**
