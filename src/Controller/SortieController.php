@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Sortie;
 use App\Entity\User;
 use App\Entity\Lieu;
+use App\Form\AfficherSortieType;
 use App\Form\AnnulerSortieType;
 use App\Form\CreateSortieType;
 use App\Form\ModifierSortieType;
@@ -23,23 +24,21 @@ class SortieController extends AbstractController
         $sortie = new Sortie();
         //$sortie ->setOrganiser($this->);
 
-                /*->setLieuxSorties($this->get)
-                ->setEtat($this->getSortie())
-                ->setSortieOrganisee($this->getSortie())
-                ->setEtatSorties($this->getEtat());*/
+        /*->setLieuxSorties($this->get)
+        ->setEtat($this->getSortie())
+        ->setSortieOrganisee($this->getSortie())
+        ->setEtatSorties($this->getEtat());*/
 
 
         //formular
         $createSortieForm = $this->createForm(CreateSortieType::class, $sortie);
         $createSortieForm->handleRequest($request);
 
-        if ($createSortieForm->isSubmitted() && $createSortieForm->isValid())
-        {
+        if ($createSortieForm->isSubmitted() && $createSortieForm->isValid()) {
             $sortieRepository->add($sortie, true);
-
             $this->addFlash('success', 'Sortie créée');
 
-            return $this->redirectToRoute($this->generateUrl('home'));
+            return $this->redirect($this->generateUrl('home'));
         }
         //response
         return $this->render('sortie/createSortie.html.twig', [
@@ -57,13 +56,15 @@ class SortieController extends AbstractController
 //    }
 
     #[Route('/afficherSortie/{id}', name: 'sortie_afficherSortie')]
-    public function afficher($id, SortieRepository $sortieRepository):Response
+    public function afficher($id, SortieRepository $sortieRepository, Request $request): Response
     {
         $sortie = $sortieRepository->find($id);
-
+        $afficherUneSortie = $this->createForm(AfficherSortieType::class, $sortie);
+        $afficherUneSortie->handleRequest($request);
         return $this->render('sortie/afficherUneSortie.html.twig', [
             'id' => $sortie,
-            'sortie' => $sortie,
+            //'sortie' => $sortie,
+            'afficherUneSortie' => $afficherUneSortie->createView(),
         ]);
     }
 
@@ -79,7 +80,7 @@ class SortieController extends AbstractController
             $sortieRepository->add($sortie, true);
 
             $this->addFlash('success', 'Sortie modifiée');
-            return $this->redirectToRoute($this->generateUrl('home'));
+            return $this->redirect($this->generateUrl('home'));
         }
         return $this->render('sortie/modifierUneSortie.html.twig', [
             'id' => $sortie,
