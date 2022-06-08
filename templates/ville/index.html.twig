@@ -3,76 +3,53 @@
 {% block title %}Ville index{% endblock %}
 
 {% block main %}
-<br>
-<div class="container">
-    <h1>Gérer les villes</h1>
     <br>
-    <div>
-        <h4>Filtrer les villes</h4>
-        <form id="form_search" action="{{ path('search') }}">
-            <a>Le nom contient: </a>
-            <label>
-                <input type="text" class="form-control" placeholder="Search" name="find">
-            </label>
-            <br>
-            <button type="submit">Rechercher</button>
-        </form>
-    </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Ville</th>
-            <th>CodePostal</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for ville in villes %}
-        <tr>
-            <td>{{ ville.nom }}</td>
-            <td>{{ ville.codePostal }}</td>
-            <td>
-                <a href="{{ path('ville_edit', {'id': ville.id}) }}">Modifier</a>
-                <a>-</a>
-                <a href="{{ path('ville_delete', {'id': ville.id}) }}">Supprimer</a>
-            </td>
+    <div class="container">
+        <h1>Gérer les villes</h1>
+        <br>
+        <div>
+            <h4>Filtrer les villes</h4>
+            <form id="form_search" action="{{ path('search') }}">
+                <a>Le nom contient: </a>
+                <label>
+                    <input type="text" class="form-control" placeholder="Search" name ="find">
+                </label>
+                <br>
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Ville</th>
+                <th>CodePostal</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ville in villes %}
+                <tr>
+                    <td>{{ ville.nom }}</td>
+                    <td>{{ ville.codePostal }}</td>
+                    <td>
+                        <a href="{{ path('ville_edit', {'id': ville.id}) }}">Modifier</a>
+                    </td>
+                </tr>
             {% else %}
+                {#<tr>
+            <td></td>
+            <td></td>
+            <td colspan="4">
+                <a href="{{ path('ville_new') }}">Ajouter</a>
+            </td>
+            </tr>#}
             {% endfor %}
-        <tr>
-
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<tr>
-    {{ form_start(form) }}
-    <div class="row g-3">
-        <div class="col">
-            {{ form_row(form.nom) }} #}
-        </div>
-        <div class="col">
-            {{ form_row(form.codePostal) }} #}
-        </div>
-        <div class="col">
-            {{ form_row(form.Ajouter) }} #}
-        </div>
+            <tr>
+                <td>
+                    <a href="{{ path('ville_new') }}">Ajouter</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    {{ form_end(form) }}
-<tr>
-    {% endblock %}
-
-    {# {{ form_start(createVilleForm) }}
-{# <div class="row g-3"> #}
-    {#    <div class="col"> #}
-    {#        {{ form_row(createVilleForm.nom) }} #}
-    {#    </div> #}
-    {#    <div class="col"> #}
-    {#        {{ form_row(createVilleForm.codePostal) }} #}
-    {#    </div> #}
-    {#    <div class="col"> #}
-    {#        {{ form_row(createVilleForm.Ajouter) }} #}
-    {#    </div> #}
-    {# </div>
-
-{{ form_end(createVilleForm) }} #}
+{% endblock %}
