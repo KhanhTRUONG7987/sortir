@@ -28,56 +28,56 @@
             </thead>
             <tbody>
             {% for ville in villes %}
-                <tr>
-                    <td>{{ ville.nom }}</td>
-                    <td>{{ ville.codePostal }}</td>
-                    <td>
-                        <a href="{{ path('ville_edit', {'id': ville.id}) }}">Modifier</a>
-                        <a>-</a>
-                        <a href="{{ path('ville_delete', {'id': ville.id}) }}">Supprimer</a>
-                    </td>
-                </tr>
-
-                {{ form_start(createVilleForm) }}
-                <tr>
-                    <div class="row g-3">
-                        <div class="col">
-                            {{ form_row(createVilleForm.nom) }}
-                        </div>
-                        <div class="col">
-                            {{ form_row(createVilleForm.codePostal) }}
-                        </div>
-                        <div class="col">
-                            {{ form_row(createVilleForm.Ajouter) }}
-                        </div>
-                    </div>
-                </tr>
-                {{ form_end(createVilleForm) }}
-
-            {% endfor %}
-
+            <tr>
+                <td>{{ ville.nom }}</td>
+                <td>{{ ville.codePostal }}</td>
+                <td>
+                    <a href="{{ path('ville_edit', {'id': ville.id}) }}">Modifier</a>
+                    <a>-</a>
+                    <a href="{{ path('ville_delete', {'id': ville.id}) }}">Supprimer</a>
+                </td>
+                {% else %}
+                {% endfor %}
+            <tr>
+                <td>
+                    <label>
+                        <input type="text" class="form-control" placeholder="Nom de ville" name="nom">
+                    </label>
+                    <span>           </span>
+                    <label>
+                        <input type="text" class="form-control" placeholder="Code Postal" name="codePostal">
+                    </label>
+                </td>
+                <td>
+                    <a href="{{ path('ville_new') }}">Ajouter</a>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
 {% endblock %}
 
-{# <tr>
+{# {{ form_start(createVilleForm) }}
+<tr>
             <td></td>
             <td></td>
             <td colspan="4">
                 <a href="{{ path('ville_new') }}">Ajouter</a>
             </td>
             </tr> #}
-{#
-<td>
-    <label>
-        <input type="text" class="form-control" placeholder="Nom de ville" name="nom">
-    </label>
-    <span>           </span>
-    <label>
-        <input type="text" class="form-control" placeholder="Code Postal" name="codePostal">
-    </label>
-</td>
-<td>
-    <a href="{{ path('ville_new') }}">Ajouter</a>
-</td> #}
+
+
+
+{# <div class="row g-3"> #}
+{#    <div class="col"> #}
+{#        {{ form_row(createVilleForm.nom) }} #}
+{#    </div> #}
+{#    <div class="col"> #}
+{#        {{ form_row(createVilleForm.codePostal) }} #}
+{#    </div> #}
+{#    <div class="col"> #}
+{#        {{ form_row(createVilleForm.Ajouter) }} #}
+{#    </div> #}
+{# </div>
+
+{{ form_end(createVilleForm) }} #}
