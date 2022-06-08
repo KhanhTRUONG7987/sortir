@@ -13,7 +13,7 @@ class LieuFixtures extends Fixture
     {
 
         $ville = $manager->getRepository(Ville::class)->findAll();
-        var_dump("villes: ", $ville);
+        //var_dump("villes: ", $ville);
         $lieu = new Lieu();
 
 
