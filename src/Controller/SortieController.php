@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Etat;
 use App\Entity\Sortie;
 use App\Entity\User;
 use App\Entity\Lieu;
@@ -26,15 +27,18 @@ class SortieController extends AbstractController
         /**
          * @var User $user
          */
+        /**
+         * @var Etat $etat
+         */
 
 
-        /*$user = $this->getUser();
-        $user->
+        $user = $this->getUser();
+        $etat = $this->g;
         $sortie ->setOrganiser($user)
                 ->setLieuxSorties()
-        ->setEtat($this->getSortie())
-        ->setSortieOrganisee($this->getSortie())
-        ->setEtatSorties($this->getEtat());*/
+                ->setEtat($etat)
+                ->setSortieOrganisee($this->getSortie())
+                ->setEtatSorties($this->getEtat());
 
         //Mettre un etat à une sortie:
         $sortie->setEtat( 'Créée');
