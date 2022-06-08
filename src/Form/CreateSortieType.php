@@ -29,6 +29,7 @@ class CreateSortieType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
+
             ->add('dateHeureDebut', DateTimeType::class, [
                 'label' => 'Date et heure de la sortie: ',
                 'widget' => 'single_text',

@@ -27,6 +27,7 @@ class SortieController extends AbstractController
          * @var User $user
          */
 
+
         /*$user = $this->getUser();
         $user->
         $sortie ->setOrganiser($user)
@@ -34,6 +35,10 @@ class SortieController extends AbstractController
         ->setEtat($this->getSortie())
         ->setSortieOrganisee($this->getSortie())
         ->setEtatSorties($this->getEtat());*/
+
+        //Mettre un etat à une sortie:
+        $sortie->setEtat( 'Créée');
+
 
 
         //formular
