@@ -45,21 +45,22 @@ class VilleController extends AbstractController
     public function new(Request $request, VilleRepository $villeRepository): Response
     {
         $ville = new Ville();
-        $ville->setNom("Nantes");
-        $ville->setCodePostal("49000");
-        //$form = $this->createForm(VilleType::class, $ville);
-        //$form->handleRequest($request);
+//        $ville->setNom("Nantes");
+//        $ville->setCodePostal("49000");
 
-        //if ($form->isSubmitted() && $form->isValid()) {
-        $villeRepository->add($ville, true);
+        $form = $this->createForm(VilleType::class, $ville);
+        $form->handleRequest($request);
 
-        return $this->redirectToRoute('ville_index', [], Response::HTTP_SEE_OTHER);
-        //}
+        if ($form->isSubmitted() && $form->isValid()) {
+            $villeRepository->add($ville, true);
 
-        //return $this->renderForm('ville/new.html.twig', [
-        // 'ville' => $ville,
-        //'form' => $form,
-        //]);
+            return $this->redirectToRoute('ville_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('ville/new.html.twig', [
+            'ville' => $ville,
+            'form' => $form,
+        ]);
     }
 
     #[Route('/{id}', name: 'ville_show', methods: ['GET'])]

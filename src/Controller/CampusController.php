@@ -43,20 +43,20 @@ class CampusController extends AbstractController
     public function new(Request $request, CampusRepository $campusRepository): Response
     {
         $campus = new Campus();
-        $campus->setNom("NANTES");
-        //$form = $this->createForm(CampusType::class, $campus);
-        //$form->handleRequest($request);
+//        $campus->setNom("NANTES");
+        $createCampusForm = $this->createForm(CampusType::class, $campus);
+        $createCampusForm->handleRequest($request);
 
-        //if ($form->isSubmitted() && $form->isValid()) {
+        if ($createCampusForm->isSubmitted() && $createCampusForm->isValid()) {
         $campusRepository->add($campus, true);
 
         return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
-        //}
+        }
 
-        //return $this->renderForm('campus/index.html.twig', [
-        // 'campus' => $campus,
-        //'form' => $form,
-        //]);
+        return $this->renderForm('campus/index.html.twig', [
+         'campus' => $campus,
+        'createCampusForm' => $createCampusForm->createView(),
+        ]);
     }
 
     #[Route('/{id}/edit', name: 'campus_edit', methods: ['GET', 'POST'])]

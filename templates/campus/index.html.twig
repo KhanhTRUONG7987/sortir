@@ -26,28 +26,35 @@
             </tr>
             </thead>
             <tbody>
-            {% for campus in campuses %}
+            {#{% for campus in campuses %}#}
                 <tr>
-                    <td>{{ campus.nom }}</td>
-                    <td>
-                        <a href="{{ path('campus_edit', {'id': campus.id}) }}">Modifier</a>
-                        <a>-</a>
-                        <a href="{{ path('campus_delete', {'id': campus.id}) }}">Supprimer</a>
-                    </td>
+                    {{ form_start(createCampusForm) }}
+                    <div class="row g-3">
+                        <div class="col">
+                            {{ form_row(createCampusForm.nom) }}
+                        </div>
+                        <div class="col">
+                            {{ form_row(createCampusForm.Ajouter) }}
+                        </div>
+                    </div>
+                    {{ form_end(createCampusForm) }}
                 </tr>
-            {% else %}
-            {% endfor %}
+            {#{% else %}#}
+            {#{% endfor %}#}
             <tr>
-                <td>
-                    <label>
-                        <input type="text" class="form-control" placeholder="Nom de campus" name="nom_new">
-                    </label>
-                </td>
-                <td>
-                    <a href="{{ path('campus_new') }}">Ajouter</a>
-                </td>
+
             </tr>
             </tbody>
         </table>
     </div>
 {% endblock %}
+
+
+{#<td>#}
+{#    <label>#}
+{#        <input type="text" class="form-control" placeholder="Nom de campus" name="nom_new">#}
+{#    </label>#}
+{#</td>#}
+{#<td>#}
+{#    <a href="{{ path('campus_new') }}">Ajouter</a>#}
+{#</td>#}

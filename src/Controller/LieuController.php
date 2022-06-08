@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Lieu;
 use App\Form\LieuType;
 use App\Repository\LieuRepository;
+use App\Repository\VilleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,9 +23,21 @@ class LieuController extends AbstractController
     }
 
     #[Route('/new', name: 'lieu_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, LieuRepository $lieuRepository): Response
+    public function new(Request $request, LieuRepository $lieuRepository, VilleRepository $villeRepository): Response
     {
         $lieu = new Lieu();
+        /*
+         * @var Ville $ville
+         */
+        $ville = $villeRepository->find('id');
+        $lieu->setVilleLieux($ville);
+
+//        $lieu->setVilleLieux($this->getVille());
+        $lieu->setNom();
+        $lieu->setRue();
+        $lieu->setLongitude();
+        $lieu->setLatitude();
+
 
         $form = $this->createForm(LieuType::class, $lieu);
         $form->handleRequest($request);
@@ -70,7 +83,7 @@ class LieuController extends AbstractController
     #[Route('/{id}', name: 'lieu_delete', methods: ['POST'])]
     public function delete(Request $request, Lieu $lieu, LieuRepository $lieuRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$lieu->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $lieu->getId(), $request->request->get('_token'))) {
             $lieuRepository->remove($lieu, true);
         }
 
