@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Sortie;
 use App\Form\FiltresAccueilType;
 use App\Form\Model\FiltresAccueilModel;
@@ -20,20 +21,26 @@ class FiltresAccueilController extends AbstractController
 
         //############################# Filtres ######################################
 
-        $searchFilters = new FiltresAccueilModel();
-        $form = $this->createForm(FiltresAccueilType::class, $searchFilters);
-        /*if($form->isValid()){
-            $searchFilters = $form->getData();
-        }*/
+        $filtresAccueilModel = new FiltresAccueilModel();
+        $searchFiltersForm = $this->createForm(FiltresAccueilType::class, $filtresAccueilModel);
+        $searchFiltersForm->handleRequest($request);
+
+        $listSortie = $sortieRepository->findActivityByFilters($filtresAccueilModel);
 
 
         //######################## recuperer List de sortie ##################################
 
-        $listSortie = $sortieRepository->findAll();
-        dump($listSortie);
+        //######################## recuperer List de sortie ##################################
+//        $sortieRepository->findAll();
+//        $number = 0;
         return $this->render('sortie/home.html.twig', [
             'controller_name' => 'FiltresAccueilController',
-            'listSortie' => [] //$listSortie,
+            'listSortie' => $listSortie,
+            //  'number' => $number,
+            // retourner le formulaire des filtres
+            //'filtresAccueilModel' => $filtresAccueilModel,
+            'searchFiltersForm' => $searchFiltersForm->createView()
         ]);
     }
+
 }

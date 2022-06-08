@@ -30,18 +30,19 @@ class SortieController extends AbstractController
         /**
          * @var Etat $etat
          */
-//
-//
-//        $user = $this->getUser();
-//
+
+
+        $user = $this->getUser();
+
 //        $sortie ->setOrganiser($user)
 //                ->setLieuxSorties()
 //                ->setEtat($etat)
 //                ->setSortieOrganisee($this->getSortie())
 //                ->setEtatSorties($this->getEtat());
-//
-//        //Mettre un etat à une sortie:
-//        $sortie->setEtat( 'Créée');
+
+        //Mettre un etat à une sortie:
+
+        $sortie->setEtat( $etat);
 
 
 
