@@ -27,6 +27,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     //################Rajouté##########################
+
+    //rajout de pseudo pour participant
+    #[ORM\Column(type: 'string', length: 255)]
+    private $pseudo;
+
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
@@ -47,6 +52,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $estRattache;
 
     //#################################################
+
 
 
     public function getId(): ?int
@@ -120,6 +126,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     //################Rajouté##########################
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
     public function getNom(): ?string
     {
         return $this->nom;

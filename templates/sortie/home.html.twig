@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SortieController!{% endblock %}
+{% block title %}Ceci est la page d'accueil{% endblock %}
+
+
 
 {% block main %}
     <link rel="stylesheet" href="{{ asset('css/Sortie.css') }}">
@@ -18,11 +20,17 @@
 
     <div id="filtre">
         <h2>Filtrer les sorties</h2>
-        <ul>
-            <li>Campus</li>
-            <li>Le nom de la sortie contient :</li>
-            <li>Entre </li>
-        </ul>
+
+        {#Afficher le formulaire#}
+
+        {{form_start(searchFiltersForm)}}
+        {{form_row(searchFiltersForm.campus)}}
+        {{form_row(searchFiltersForm.motCles)}}
+        {{form_row(searchFiltersForm.dateHeureDebut)}}
+        {{form_row(searchFiltersForm.dateLimiteInscription)}}
+        {{form_end(searchFiltersForm)}}
+        {#<button type="submit" class="btn btn-primary">Rechercher</button>#}
+
 
         <div >
 

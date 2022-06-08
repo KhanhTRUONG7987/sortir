@@ -146,9 +146,9 @@ class Sortie
     }
 
     /**
-     * @return Collection<int, Participant>
+     * @return Collection<int, User>
      */
-    public function getSorties(): Collection
+    /*public function getSorties(): Collection
     {
         return $this->sorties;
     }
@@ -170,7 +170,7 @@ class Sortie
         }
 
         return $this;
-    }
+    }*/
 
     public function getSortieOrganisee(): ?Campus
     {

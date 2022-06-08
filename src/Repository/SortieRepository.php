@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+
 use App\Entity\Sortie;
+use App\Form\Model\FiltresAccueilModel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+
 
 /**
  * @extends ServiceEntityRepository<Sortie>
@@ -39,9 +42,69 @@ class SortieRepository extends ServiceEntityRepository
         }
     }
 
-    /*public function findSorties($searchFilters){
-        $qb =$this->createQueryBuilder()
+    public function findActivityByFilters(FiltresAccueilModel $filtresAccueilModel)
+    {
+        // 's' pour sortie
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder->addSelect('s');
+
+        if ($filtresAccueilModel->getCampus()) {
+            $queryBuilder->andWhere('s.sortieOrganisee = :campus')
+                ->setParameter('campus', $filtresAccueilModel->getCampus() );
+
+        }
+
+     if ($filtresAccueilModel->getMotCles()) {
+            $queryBuilder->andWhere('s.nom = :motCles')
+            ->setParameter('motCles', $filtresAccueilModel->getMotCles());
+
+       }
+
+        if ($filtresAccueilModel->getDateHeureDebut()) {
+            $queryBuilder->andWhere('s.dateHeureDebut = :dateHeureDebut')
+            ->setParameter('dateHeureDebut', $filtresAccueilModel->getDateHeureDebut());
+
+        }
+
+        if ($filtresAccueilModel->getDateLimiteInscription()){
+            $queryBuilder->andWhere('s.dateLimiteInscription = :dateLimiteInscription')
+            ->setParameter('dateLimiteInscription', $filtresAccueilModel->getDateLimiteInscription());
+
+
+
+        }
+
+        //à vérifier
+
+        if($filtresAccueilModel->getEstOrganisateur()){
+            $queryBuilder->andWhere('s.estOrganisateur = :estOrganisateur' )
+                ->setParameter('estOrganisateur', $filtresAccueilModel->getEstOrganisateur());
+
+
+        }
+
+        if($filtresAccueilModel->getInscrit()){
+            $queryBuilder->andWhere('s.inscrit = :inscrit' )
+                ->setParameter('inscrit', $filtresAccueilModel->getInscrit());
+
+
+        }
+
+        if($filtresAccueilModel->getPasInscrit()){
+            $queryBuilder->andWhere('s.pasInscrit = :pasInscrit' )
+                ->setParameter('pasInscrit', $filtresAccueilModel->getPasInscrit());
+
+
+        }
+
+
+
+        return $queryBuilder->getQuery()->getResult();
+
+
     }
+
+
 
 //    /**
 //     * @return Sortie[] Returns an array of Sortie objects

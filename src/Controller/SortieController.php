@@ -51,7 +51,7 @@ class SortieController extends AbstractController
 //    #[Route('/sortie', name: 'sortie')]
 //    public function index(SortieRepository $sortieRepository): Response
 //    {
-//        return $this->render('sortie/index.html.twig', [
+//        return $this->render('sortie/profilParticipant.html.twig', [
 //            'sorties' => $sortieRepository->findAll(),
 //        ]);
 //    }

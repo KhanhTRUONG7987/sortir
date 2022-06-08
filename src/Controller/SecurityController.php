@@ -24,9 +24,7 @@ class SecurityController extends AbstractController
 
     #[Route(path: '/logout', name: 'app_logout')]
     public function index(): Response
-    {
-
-    }
+    {}
     public function logout()
     {
     }

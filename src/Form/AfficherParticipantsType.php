@@ -3,19 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Campus;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MonProfilType extends AbstractType
+class AfficherParticipantsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -24,49 +19,35 @@ class MonProfilType extends AbstractType
                 'label' => 'Nom :',
                 'required' => false
             ])
+
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom :',
                 'required' => false
             ])
+
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone :',
                 'required' => false
             ])
+
+
             ->add('email', EmailType::class, [
                 'label' => 'Email :',
                 'required' => false
             ])
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'invalid_message' => 'Le mot de passe ne correspond pas.',
-                'options' => ['attr' => ['class' => 'password']],
-                'required' => false,
 
-                // ne pas oublier de mettre mapped pour éviter de devoir modifier obligatoirement le mot de passe
-                'mapped' => false,
-                'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmation du mot de passe'],
-            ])
             ->add('estRattache', EntityType::class, [
-
                 'label' => 'Campus :',
-                'choice_label' => "nom",
+                'choice_label' =>'nom',
                 'class' => Campus::class
             ])
-            ->add('Modifier', SubmitType::class, [
-                'attr' => [
-                    'class' => 'btn btn-primary',
-                ]
-            ]);
-
+        ;
     }
-
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-
+            // Configure your form options here
         ]);
     }
-
 }

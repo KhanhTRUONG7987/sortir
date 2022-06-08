@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Sortie;
 use App\Form\FiltresAccueilType;
 use App\Form\Model\FiltresAccueilModel;
@@ -18,23 +19,36 @@ class FiltresAccueilController extends AbstractController
     public function accueil(SortieRepository $sortieRepository, Request $request): Response
     {
 
-        //############################# Filtres ######################################
+        //##############################partie formulaire de filtre###############################
 
-        $searchFilters = new FiltresAccueilModel();
-        $form = $this->createForm(FiltresAccueilType::class, $searchFilters);
-                /*if($form->isValid()){
-                    $searchFilters = $form->getData();
-                }*/
+        $filtresAccueilModel = new FiltresAccueilModel();
+        $searchFiltersForm = $this->createForm(FiltresAccueilType::class, $filtresAccueilModel);
+        $searchFiltersForm->handleRequest($request);
+
+        //traitement formulaire
+
+//        if ($searchFiltersForm->isSubmitted() && $searchFiltersForm->isValid()) {
+//            $listSortie = $sortieRepository->findActivityByFilters($filtresAccueilModel);
+//        } else {
+//
+//        }
+        $listSortie = $sortieRepository->findActivityByFilters($filtresAccueilModel);
+        //############################# partie checkbox ######################################
 
 
         //######################## recuperer List de sortie ##################################
 
-        $listSortie = $sortieRepository->findAll();
-        $number = 0;
+//        $sortieRepository->findAll();
+//        $number = 0;
         return $this->render('sortie/home.html.twig', [
             'controller_name' => 'FiltresAccueilController',
             'listSortie' => $listSortie,
-            'number' => $number,
+          //  'number' => $number,
+
+            // retourner le formulaire des filtres
+            //'filtresAccueilModel' => $filtresAccueilModel,
+            'searchFiltersForm' => $searchFiltersForm->createView()
         ]);
     }
+
 }

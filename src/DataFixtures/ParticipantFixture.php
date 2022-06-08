@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Campus;
-use App\Entity\User ;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -17,15 +17,18 @@ class ParticipantFixture extends Fixture
         $this->passwordHasher = $passwordHasher;
     }
 
-    public function load(ObjectManager $manager ){
+    public function load(ObjectManager $manager)
+    {
         $this->addUser($manager);
 
     }
-    public function addUser($manager){
+
+    public function addUser($manager)
+    {
 
         $campus = $manager->getRepository(Campus::class)->findAll();
         $user = new User();
-        $user->setEmail('QuQu@gmail.com');
+        $user->setEmail('lea@mail.com');
 
         $plaintextPassword = 123;
         // hash the password (based on the security.yaml config for the $user class)
@@ -35,9 +38,9 @@ class ParticipantFixture extends Fixture
         );
         $user->setPassword($hashedPassword);
 
-        $user->setNom('DEBOUDT');
-        $user->setPrenom('Quentin');
-        $user->setTelephone('0687789856');
+        $user->setNom('TURGEON');
+        $user->setPrenom('Léa');
+        $user->setTelephone('0601020304');
         $user->setActif(true);
         $user->setEstRattache($campus[0]);
 
