@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Lieu;
+use App\Entity\Ville;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
@@ -16,11 +17,17 @@ class LieuType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom',TextType::class, [
-            'attr' => [
-        'class' => 'form-control'
-    ]])
-            ->add('rue', TextType::class,[
+//            ->add('villeLieux', EntityType::class, [
+//                'label' => 'Ville: ',
+//                'class' => Ville::class, 'choice_label' => 'nom', 'mapped' => true,
+//                'attr' => [
+//                    'class' => 'form-control'
+//                ]])
+            ->add('nom', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]])
+            ->add('rue', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ]
@@ -55,8 +62,7 @@ class LieuType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

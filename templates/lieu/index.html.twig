@@ -10,6 +10,7 @@
         <table class="table">
             <thead>
             <tr>
+{#                <th>Ville</th>#}
                 <th>Nom</th>
                 <th>Rue</th>
                 <th>Latitude</th>
@@ -20,6 +21,7 @@
             <tbody>
             {% for lieu in lieus %}
                 <tr>
+{#                    <td>{{ lieu.villeLieux }}</td>#}
                     <td>{{ lieu.nom }}</td>
                     <td>{{ lieu.rue }}</td>
                     <td>{{ lieu.latitude }}</td>
@@ -35,6 +37,7 @@
             <tr>
                 <td>
                     <label>
+                       <input type="text" class="form-control" placeholder="Ville" name="villeLieux">
                         <input type="text" class="form-control" placeholder="Nom de lieu" name="nom">
                         <input type="text" class="form-control" placeholder="Nom du rue" name="rue">
                         <input type="text" class="form-control" placeholder="latitude" name="latitude">
