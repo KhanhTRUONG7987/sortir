@@ -47,7 +47,7 @@ class ParticipantFixture extends Fixture
 
         //#################### user 2 #############################
         $user1 = new User();
-        $user1->setEmail('QuQu@gmail.com');
+        $user1->setEmail('LeLe@gmail.com');
 
         $plaintextPassword = 456;
         // hash the password (based on the security.yaml config for the $user class)
@@ -67,5 +67,6 @@ class ParticipantFixture extends Fixture
         $manager->persist($user1);
 
         $manager->flush();
+
     }
 }
