@@ -32,18 +32,6 @@ class SortieController extends AbstractController
          * @var Etat $etat
          */
 
-//
-//        $user = $this->getUser();
-//        $etat = $this->g;
-//        $sortie ->setOrganiser($user)
-//                ->setLieuxSorties()
-//                ->setEtat($etat)
-//                ->setSortieOrganisee($this->getSortie())
-//                ->setEtatSorties($this->getEtat());
-
-        //Mettre un etat à une sortie:
-
-
 
      $etat = $etatRepository->findOneBy(['libelle' => 'Créée']);
         $sortie->setEtatSorties($etat);
@@ -71,13 +59,6 @@ class SortieController extends AbstractController
         ]);
     }
 
-//    #[Route('/sortie', name: 'sortie')]
-//    public function index(SortieRepository $sortieRepository): Response
-//    {
-//        return $this->render('sortie/index.html.twig', [
-//            'sorties' => $sortieRepository->findAll(),
-//        ]);
-//    }
 
 //#############################AFFICHER UNE SORTIE################################
 
