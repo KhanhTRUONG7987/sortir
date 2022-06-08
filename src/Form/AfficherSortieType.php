@@ -36,6 +36,7 @@ class AfficherSortieType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
+
             ->add('dateLimiteInscription', DateType::class,[
                 'label' => 'Date limite d\'inscription :',
                 'widget' => 'single_text',
