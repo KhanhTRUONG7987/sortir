@@ -60,6 +60,7 @@ nav a{
     font-family: 'Spinnaker';
     color: var(--text-1);
 }
-.footer {
-
+footer {
+    background-color: var(--secondary-color);
+    margin-bottom: 5px;
 }

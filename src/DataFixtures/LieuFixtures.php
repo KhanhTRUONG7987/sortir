@@ -12,18 +12,18 @@ class LieuFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        $ville = $manager->getRepository(Ville::class)->findAll();
-        //var_dump("villes: ", $ville);
-        $lieu = new Lieu();
-
-
-        $lieu   ->setNom("Piscine")
-                ->setRue("Rue des piscinades")
-                ->setLatitude(127.56)
-                ->setLongitude(308.76)
-                ->setVilleLieux();
-        $manager->persist($lieu);
-
-        $manager->flush();
+//        $ville = $manager->getRepository(Ville::class)->findAll();
+//        //var_dump("villes: ", $ville);
+//        $lieu = new Lieu();
+//
+//
+//        $lieu   ->setNom("Piscine")
+//                ->setRue("Rue des piscinades")
+//                ->setLatitude(127.56)
+//                ->setLongitude(308.76)
+//                ->setVilleLieux();
+//        $manager->persist($lieu);
+//
+//        $manager->flush();
     }
 }
