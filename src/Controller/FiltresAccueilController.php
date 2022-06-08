@@ -25,15 +25,7 @@ class FiltresAccueilController extends AbstractController
         $searchFiltersForm = $this->createForm(FiltresAccueilType::class, $filtresAccueilModel);
         $searchFiltersForm->handleRequest($request);
 
-        //traitement formulaire
-
-//        if ($searchFiltersForm->isSubmitted() && $searchFiltersForm->isValid()) {
-//            $listSortie = $sortieRepository->findActivityByFilters($filtresAccueilModel);
-//        } else {
-//
-//        }
         $listSortie = $sortieRepository->findActivityByFilters($filtresAccueilModel);
-        //############################# partie checkbox ######################################
 
 
         //######################## recuperer List de sortie ##################################

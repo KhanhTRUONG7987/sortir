@@ -28,6 +28,7 @@ class LieuType extends AbstractType
             ->add('latitude', EntityType::class, [
                 'label' => 'Latitude: ',
                 'class' => Lieu::class, 'choice_label' => 'latitude', 'mapped' => false,
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
@@ -35,6 +36,7 @@ class LieuType extends AbstractType
             ->add('longitude', EntityType::class, [
                 'label' => 'Longitude: ',
                 'class' => Lieu::class, 'choice_label' => 'longitude', 'mapped' => false,
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]

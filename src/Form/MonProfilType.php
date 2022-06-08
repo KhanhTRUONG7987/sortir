@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -56,6 +57,7 @@ class MonProfilType extends AbstractType
                 'invalid_message' => 'Le mot de passe ne correspond pas.',
                 'options' => ['attr' => ['class' => 'password']],
                 'required' => false,
+                'mapped'=>false,
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmation du mot de passe',
                     'attr' => [
@@ -73,6 +75,13 @@ class MonProfilType extends AbstractType
                 'class' => Campus::class,
                 'attr' => [
                     'class' => 'form-control'
+                ]
+            ])
+
+            ->add('submit', SubmitType::class, [
+                'label' => 'Enregistrer',
+                'attr' => [
+                    'class' => 'btn btn-primary',
                 ]
             ])
 

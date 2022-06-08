@@ -50,53 +50,51 @@ class SortieRepository extends ServiceEntityRepository
 
         if ($filtresAccueilModel->getCampus()) {
             $queryBuilder->andWhere('s.sortieOrganisee = :campus')
-                ->setParameter('campus', $filtresAccueilModel->getCampus() );
+                ->setParameter('campus', $filtresAccueilModel->getCampus());
 
         }
 
-     if ($filtresAccueilModel->getMotCles()) {
+        if ($filtresAccueilModel->getMotCles()) {
             $queryBuilder->andWhere('s.nom = :motCles')
-            ->setParameter('motCles', $filtresAccueilModel->getMotCles());
+                ->setParameter('motCles', $filtresAccueilModel->getMotCles());
 
-       }
+        }
 
         if ($filtresAccueilModel->getDateHeureDebut()) {
             $queryBuilder->andWhere('s.dateHeureDebut = :dateHeureDebut')
-            ->setParameter('dateHeureDebut', $filtresAccueilModel->getDateHeureDebut());
+                ->setParameter('dateHeureDebut', $filtresAccueilModel->getDateHeureDebut());
 
         }
 
-        if ($filtresAccueilModel->getDateLimiteInscription()){
+        if ($filtresAccueilModel->getDateLimiteInscription()) {
             $queryBuilder->andWhere('s.dateLimiteInscription = :dateLimiteInscription')
-            ->setParameter('dateLimiteInscription', $filtresAccueilModel->getDateLimiteInscription());
-
+                ->setParameter('dateLimiteInscription', $filtresAccueilModel->getDateLimiteInscription());
 
 
         }
 
         //à vérifier
 
-        if($filtresAccueilModel->getEstOrganisateur()){
-            $queryBuilder->andWhere('s.estOrganisateur = :estOrganisateur' )
+        if ($filtresAccueilModel->getEstOrganisateur()) {
+            $queryBuilder->andWhere('s.estOrganisateur = :estOrganisateur')
                 ->setParameter('estOrganisateur', $filtresAccueilModel->getEstOrganisateur());
 
 
         }
 
-        if($filtresAccueilModel->getInscrit()){
-            $queryBuilder->andWhere('s.inscrit = :inscrit' )
+        if ($filtresAccueilModel->getInscrit()) {
+            $queryBuilder->andWhere('s.inscrit = :inscrit')
                 ->setParameter('inscrit', $filtresAccueilModel->getInscrit());
 
 
         }
 
-        if($filtresAccueilModel->getPasInscrit()){
-            $queryBuilder->andWhere('s.pasInscrit = :pasInscrit' )
+        if ($filtresAccueilModel->getPasInscrit()) {
+            $queryBuilder->andWhere('s.pasInscrit = :pasInscrit')
                 ->setParameter('pasInscrit', $filtresAccueilModel->getPasInscrit());
 
 
         }
-
 
 
         return $queryBuilder->getQuery()->getResult();

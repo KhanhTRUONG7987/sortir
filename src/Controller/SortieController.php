@@ -31,21 +31,21 @@ class SortieController extends AbstractController
          * @var Etat $etat
          */
 
-
-        $user = $this->getUser();
-        $etat = $this->g;
-        $sortie ->setOrganiser($user)
-                ->setLieuxSorties()
-                ->setEtat($etat)
-                ->setSortieOrganisee($this->getSortie())
-                ->setEtatSorties($this->getEtat());
+//
+//        $user = $this->getUser();
+//        $etat = $this->g;
+//        $sortie ->setOrganiser($user)
+//                ->setLieuxSorties()
+//                ->setEtat($etat)
+//                ->setSortieOrganisee($this->getSortie())
+//                ->setEtatSorties($this->getEtat());
 
         //Mettre un etat à une sortie:
         $sortie->setEtat( 'Créée');
 
 
 
-        //formular
+        //formulaire
         $createSortieForm = $this->createForm(CreateSortieType::class, $sortie);
         $createSortieForm->handleRequest($request);
 
@@ -67,10 +67,12 @@ class SortieController extends AbstractController
 //    #[Route('/sortie', name: 'sortie')]
 //    public function index(SortieRepository $sortieRepository): Response
 //    {
-//        return $this->render('sortie/campus.html.twig', [
+//        return $this->render('sortie/index.html.twig', [
 //            'sorties' => $sortieRepository->findAll(),
 //        ]);
 //    }
+
+//#############################AFFICHER UNE SORTIE################################
 
     #[Route('/afficherSortie/{id}', name: 'sortie_afficherSortie')]
     public function afficher($id, SortieRepository $sortieRepository, Request $request):Response
@@ -84,6 +86,8 @@ class SortieController extends AbstractController
             'afficherUneSortie' => $afficherUneSortie->createView(),
         ]);
     }
+
+    //#############################MODIFIER UNE SORTIE################################
 
     #[Route('/modifierSortie/{id}', name: 'sortie_modifierSortie')]
     public function modifier($id, SortieRepository $sortieRepository, Request $request)
@@ -105,6 +109,8 @@ class SortieController extends AbstractController
         ]);
 
     }
+
+    //#############################ANNULER UNE SORTIE################################
 
     #[Route('/annulerSortie/{id}', name: 'sortie_annulerSortie')]
     public function annuler(Request $request, Sortie $sortie, SortieRepository $sortieRepository)

@@ -35,7 +35,7 @@ class ParticipantFixture extends Fixture
             $plaintextPassword
         );
         $user->setPassword($hashedPassword);
-        //$user1->Pseudo('QuQu');
+        $user->setPseudo('QuQu');
         $user->setNom('DEBOUDT');
         $user->setPrenom('Quentin');
         $user->setTelephone('0687789856');
@@ -56,7 +56,7 @@ class ParticipantFixture extends Fixture
             $plaintextPassword
         );
         $user1->setPassword($hashedPassword);
-        //$user1->Pseudo('LéLé');
+        $user1->setPseudo('LéLé');
         $user1->setNom('Turgeon');
         $user1->setPrenom('Léa');
         $user1->setTelephone('0615345856');

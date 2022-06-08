@@ -25,7 +25,7 @@ class CampusController extends AbstractController
     public function indexAction(Request $request, CampusRepository $campusRepository): Response
     {
 
-        return $this->render(':campus:index.html.twig', array());
+        return $this->render('campus/index.html.twig', array());
     }
 
     /**
