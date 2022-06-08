@@ -52,10 +52,6 @@ class Sortie
     #[ORM\JoinColumn(nullable: false)]
     private $organisateur;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'sortiesOrganisees')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $organiser;
-
 
 
     public function getId(): ?int
@@ -203,17 +199,6 @@ class Sortie
         return $this;
     }
 
-    public function getOrganiser(): ?User
-    {
-        return $this->organiser;
-    }
-
-    public function setOrganiser(?User $organiser): self
-    {
-        $this->organiser = $organiser;
-
-        return $this;
-    }
 
 
 }
