@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Campus{% endblock %}
+
+{% block main %}
+<br>
+<div class="container">
+    {{ form_start(form) }}
+    <div class="entry-title" style="color: #0d5470">
+        <h1>Créer un campus</h1>
+    </div>
+    <div class="row g-3 aligncenter">
+        <div class="col">
+            {{ form_row(form.nom, {'attr': {'placeholder': "Nom de campus"}}) }}
+        </div>
+    </div>
+    <br>
+
+    {{ include('campus/_form.html.twig') }}
+
+    <a href="{{ path('campus_index') }}">back</a>
+</div>
+{% endblock %}
