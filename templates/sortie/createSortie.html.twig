@@ -1,50 +1,94 @@
 {% extends 'base.html.twig' %}
-{#     {% form_theme formCreateSortie 'bootstrap_4_layout.html.twig' %}#}
 
 {% block main %}
-
-        {{form_start(createSortieForm)}}
-        <div class="row gx-3 justify-content-center">
+    <br>
+    <div class="container">
+        {{ form_start(createSortieForm) }}
+        <div class="entry-title" style="color: #0d5470">
             <h1>Créer une sortie</h1>
-            <div class="col-md-4" >
+        </div>
+        <br>
+        <div class="row g-3 aligncenter">
+            <div class="col">
                 {{ form_row(createSortieForm.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
-
-                {{ form_row(createSortieForm.dateHeureDebut) }}
-
-                {{ form_row(createSortieForm.dateLimiteInscription) }}
-
-                {{ form_row(createSortieForm.nbinscriptionsMax) }}
-
-                {{ form_row(createSortieForm.duree) }}
-
-                {{ form_row(createSortieForm.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
             </div>
-            <div class="col-md-4">
-                {{ form_row(createSortieForm.campus) }}
-
-                {{ form_row(createSortieForm.ville) }}
-
-                {{ form_row(createSortieForm.lieuxSorties) }}
-
-                {{ form_row(createSortieForm.rue) }}
-
-                {{ form_row(createSortieForm.codePostal) }}
-
-                {{ form_row(createSortieForm.latitude) }}
-
-                {{ form_row(createSortieForm.longitude) }}
-            </div>
-            <div>
-                <br><br>
-            </div>
-
-            <div class="col-md-4 g-5 justify-content-between">
-                <button type="submit" class="btn btn-warning">Enregistrer</button>
-                <button type="submit" class="btn btn-primary">Publier la sortie</button>
-                <button type="submit" class="btn btn-danger">Annuler</button>
+            <div class="col">
+                {{ form_row(createSortieForm.sortieOrganisee, {'attr': {'placeholder': "Campus"}}) }}
             </div>
         </div>
-        {{form_end(createSortieForm)}}
-
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(createSortieForm.dateHeureDebut) }}
+            </div>
+            <div class="col">
+                {{ form_row(createSortieForm.ville) }}
+            </div>
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(createSortieForm.dateLimiteInscription) }}
+            </div>
+            <div class="col">
+                <div class="row g-3">
+                    <div class="col">
+                        {{ form_row(createSortieForm.lieuxSorties) }}
+                    </div>
+                    <div class="col">
+                        <a href="{{ path('lieu_index') }}"><img class="imgButton"
+                                                                src="{{ asset('img/plusButton.png') }}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(createSortieForm.nbinscriptionsMax) }}
+            </div>
+            <div class="col">
+                {{ form_row(createSortieForm.rue) }}
+            </div>
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(createSortieForm.duree) }}
+            </div>
+            <div class="col">
+                {{ form_row(createSortieForm.codePostal) }}
+            </div>
+        </div>
+        <br>
+        <div class="row g-3">
+            <div class="col">
+                {{ form_row(createSortieForm.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
+            </div>
+            <div class="col">
+                {{ form_row(createSortieForm.latitude) }}
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col">
+            </div>
+            <div class="col">
+                {{ form_row(createSortieForm.longitude) }}
+            </div>
+        </div>
+        <br><br>
+        <div class="row g-3 container-fluid">
+            <div class="col" button1 button >
+                {{ form_row(createSortieForm.Enregistrer) }}
+            </div>
+            <div class="col "  button2 button>
+                {{ form_row(createSortieForm.Publier) }}
+            </div>
+            <div class="col"  button3 button >
+                {{ form_row(createSortieForm.Annuler) }}
+            </div>
+        </div>
+        <br>
+        {{ form_end(createSortieForm) }}
+    </div>
 {% endblock %}
 

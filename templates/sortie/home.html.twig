@@ -41,35 +41,38 @@
     <div id="lstSorties">
         <table class="table table-hover">
             <thead id="child-1">
-                <tr class="table-primary">
-                    <td>Nom de la sortie</td>
-                    <td>Date de la sortie</td>
-                    <td>Clôture</td>
-                    <td>inscrits/place</td>
-                    <td>Etat</td>
-                    <td>Inscrit</td>
-                    <td>Organisateur</td>
-                    <td>Action</td>
-                </tr>
+            <tr class="table-primary">
+                <td>Nom de la sortie</td>
+                <td>Date de la sortie</td>
+                <td>Clôture</td>
+                <td>inscrits/place</td>
+                <td>Etat</td>
+                <td>Inscrit</td>
+                <td>Organisateur</td>
+                <td>Action</td>
+            </tr>
             </thead>
             <TBODY>
-                {%for sortie in listSortie%}
-                    <tr class="table-secondary">
-                        <td>{{sortie.nom}}</td>
-                        <td>{{sortie.dateHeureDebut|date("m/d/Y")}}</td>
-                        <td>{{sortie.dateLimiteInscription|date("m/d/Y")}}</td>
-                        <td>{{sortie.nbinscriptionsMax}} / {{sortie.nbinscriptionsMax}}</td>
-                        <td>{{sortie.etat}}</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td><a href="{{ path('sortie_afficherSortie') }}">Afficher</a></td>
-                    </tr>
-                {%endfor%}
+            {%for sortie in listSortie%}
+                <tr class="table-secondary">
+                    <td>{{sortie.nom}}</td>
+                    <td>{{sortie.dateHeureDebut|date("m/d/Y")}}</td>
+                    <td>{{sortie.dateLimiteInscription|date("m/d/Y")}}</td>
+                    <td>{{sortie.nbinscriptionsMax}} / {{sortie.nbinscriptionsMax}}</td>
+                    <td>{{sortie.etat}}</td>
+                    <td>...</td>
+                    <td>{{sortie.id}}</td>
+                    <td>
+                        <a href="{{ path('sortie_afficherSortie', {'id': sortie.id}) }}" >Afficher</a>
+                        {#                            <a onclick="sho" >Afficher</a>#}
+                    </td>
+                </tr>
+            {%endfor%}
             </TBODY>
         </table>
 
         <button class="btn btn-lg btn-primary" type="button" onclick="window.location.href='sortie/createSortie'" >
-             Nouvelle Sortie
+            Nouvelle Sortie
         </button>
     </div>
 

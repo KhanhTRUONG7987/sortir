@@ -36,9 +36,6 @@ class Sortie
     #[ORM\Column(type: 'string', length: 255)]
     private $etat;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'participants')]
-    private $sorties;
-
     #[ORM\ManyToOne(targetEntity: Campus::class, inversedBy: 'sortieOrganisee')]
     #[ORM\JoinColumn(nullable: false)]
     private $sortieOrganisee;
@@ -51,10 +48,11 @@ class Sortie
     #[ORM\JoinColumn(nullable: false)]
     private $etatSorties;
 
-    public function __construct()
-    {
-        $this->sorties = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'Sortie')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $organisateur;
+
+
 
     public function getId(): ?int
     {
@@ -148,29 +146,10 @@ class Sortie
     /**
      * @return Collection<int, User>
      */
-    /*public function getSorties(): Collection
+    public function getSorties(): Collection
     {
         return $this->sorties;
     }
-
-    public function addSorty(Participant $sorty): self
-    {
-        if (!$this->sorties->contains($sorty)) {
-            $this->sorties[] = $sorty;
-            $sorty->addParticipant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSorty(Participant $sorty): self
-    {
-        if ($this->sorties->removeElement($sorty)) {
-            $sorty->removeParticipant($this);
-        }
-
-        return $this;
-    }*/
 
     public function getSortieOrganisee(): ?Campus
     {
@@ -207,4 +186,19 @@ class Sortie
 
         return $this;
     }
+
+    public function getOrganisateur(): ?User
+    {
+        return $this->organisateur;
+    }
+
+    public function setOrganisateur(?User $organisateur): self
+    {
+        $this->organisateur = $organisateur;
+
+        return $this;
+    }
+
+
+
 }

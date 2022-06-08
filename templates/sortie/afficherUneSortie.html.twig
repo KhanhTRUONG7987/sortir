@@ -11,10 +11,10 @@
 <div class="example-wrapper">
     <h1>Afficher une sortie</h1>
 
-    {{ form_start(createSortieForm) }}
+    {{ form_start(afficherUneSortie) }}
 
 
-    {{ form_row(afficherUneSortie.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
+    {{ form_row(afficherUneSortie.nom)}}
 
     {{ form_row(afficherUneSortie.dateHeureDebut) }}
 
@@ -24,12 +24,10 @@
 
     {{ form_row(afficherUneSortie.duree) }}
 
-    {{ form_row(afficherUneSortie.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
+    {{ form_row(afficherUneSortie.infosSortie)}}
 
 
     {{ form_row(afficherUneSortie.campus) }}
-
-    {{ form_row(afficherUneSortie.ville) }}
 
     {{ form_row(afficherUneSortie.lieuxSorties) }}
 

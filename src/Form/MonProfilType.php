@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,51 +21,75 @@ class MonProfilType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'label' => 'Nom :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
+
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
+
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
+
             ->add('email', EmailType::class, [
                 'label' => 'Email :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
+
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe ne correspond pas.',
                 'options' => ['attr' => ['class' => 'password']],
                 'required' => false,
-
-                // ne pas oublier de mettre mapped pour éviter de devoir modifier obligatoirement le mot de passe
-                'mapped' => false,
                 'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmation du mot de passe'],
+                'second_options' => ['label' => 'Confirmation du mot de passe',
+                    'attr' => [
+                        'class' => 'form-control'
+                    ]
+                ],
             ])
+
+
+
             ->add('estRattache', EntityType::class, [
 
                 'label' => 'Campus :',
-                'choice_label' => "nom",
-                'class' => Campus::class
-            ])
-            ->add('Modifier', SubmitType::class, [
+                'choice_label'=> "nom",
+                'class' => Campus::class,
                 'attr' => [
-                    'class' => 'btn btn-primary',
+                    'class' => 'form-control'
                 ]
-            ]);
+            ])
+
+
+
+        ;
 
     }
+
+
 
 
     public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
+        {
+            $resolver->setDefaults([
 
-        ]);
-    }
+            ]);
+        }
 
 }

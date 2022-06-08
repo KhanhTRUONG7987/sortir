@@ -39,28 +39,39 @@ class VilleRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Ville[] Returns an array of Ville objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('v.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Ville
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @return Ville[] Returns an array of Ville objects
+     * @param string $value
+     * @param $ville
+     * @throws \Exception
+     */
+    public function findBySearch($value): array
+    {
+        $query = $this->createQueryBuilder('v')
+            ->addSelect('v')
+            ->andWhere('v.ville = :ville')
+            ->orWhere('v.codePostal = :codePostal')
+            ->orWhere('v.nom LIKE :value')
+            ->setParameter('find', $value)
+            ->setParameter('ville', $value)
+            ->setParameter('codePostal', $value)
+            ->orderBy('v.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery();
+        try {
+            return $query->getResult();
+        }
+        catch(\Exception $e) {
+            throw new \Exception('problème '. $e->getMessage(). $e->getFile());
+    }
+    }
+    public function findOneBySomeField($value): ?Ville
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

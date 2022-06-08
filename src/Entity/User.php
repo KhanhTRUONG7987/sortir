@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -51,6 +53,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinColumn(nullable: false)]
     private $estRattache;
 
+
+    #[ORM\OneToMany(mappedBy: 'organisateur', targetEntity: Sortie::class)]
+    private $Sortie;
+
+    public function __construct()
+    {
+        $this->Sortie = new ArrayCollection();
+    }
+
     //#################################################
 
 
@@ -98,7 +109,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[0] = 'ROLE_USER';
+        $roles[1] = 'ROLE_ADMIN';
 
         return array_unique($roles);
     }
@@ -225,4 +237,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     //##################################################
+
+    /**
+     * @return Collection<int, Sortie>
+     */
+    public function getSortie(): Collection
+    {
+        return $this->Sortie;
+    }
+
+    public function addSortie(Sortie $sortie): self
+    {
+        if (!$this->Sortie->contains($sortie)) {
+            $this->Sortie[] = $sortie;
+            $sortie->setOrganisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSortie(Sortie $sortie): self
+    {
+        if ($this->Sortie->removeElement($sortie)) {
+            // set the owning side to null (unless already changed)
+            if ($sortie->getOrganisateur() === $this) {
+                $sortie->setOrganisateur(null);
+            }
+        }
+
+        return $this;
+    }
 }

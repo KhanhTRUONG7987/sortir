@@ -1,0 +1,65 @@
+.imgButton {
+    max-width: 30%;
+    max-height: 30%;
+}
+
+:root {
+    --primary-color: #004982;
+    --secondary-color: #011f39;
+    --third-color: #999999;
+    --text-1: #ffffff;
+    --text-2: #95B258;
+    --text-3: #333333;
+    --text-4: #F6F5FA;
+    --fond: #EBF4FB;
+
+}
+
+html, body{
+    font-family: 'Open Sans', sans-serif;
+}
+::-webkit-input-placeholder{
+    font-family: 'Spinnaker';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.form-control {
+    font-family: 'Open Sans';
+}
+
+.button {
+    color: var(--text-1) !important;
+}
+
+.button1 {
+    background-color: var(--primary-color);
+    color: var(--text-1) !important;
+}
+
+.button2 {
+    background-color: var(--secondary-color);
+    color: var(--text-1) !important;
+}
+
+.button3 {
+    background-color: var(--third-color);
+    color: var(--text-1) !important;
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+}
+nav a{
+    font-size: large;
+    font-weight: bolder;
+    font-family: 'Spinnaker';
+    color: var(--text-1);
+}
+.footer {
+
+}
