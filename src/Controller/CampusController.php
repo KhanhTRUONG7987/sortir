@@ -59,14 +59,6 @@ class CampusController extends AbstractController
         //]);
     }
 
-    #[Route('/{id}', name: 'campus_show', methods: ['GET'])]
-    public function show(Campus $campus): Response
-    {
-        return $this->render('campus/index.html.twig', [
-            'campus' => $campus,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'campus_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Campus $campus, CampusRepository $campusRepository): Response
     {
@@ -80,19 +72,25 @@ class CampusController extends AbstractController
         }
 
         return $this->renderForm('campus/index.html.twig', [
+            'id'=>$campus,
             'campus' => $campus,
             'form' => $form,
+            'campuses'=> $campusRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}', name: 'campus_delete', methods: ['POST'])]
     public function delete(Request $request, Campus $campus, CampusRepository $campusRepository): Response
     {
+       // if ($this->isCsrfTokenValid('delete'.$campus->getId(), $request->request->get('_token'))) {
         if ($this->isCsrfTokenValid('delete'.$campus->getId(), $request->request->get('_token'))) {
             $campusRepository->remove($campus, true);
         }
 
-        return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('campus_index', [
+            'id'=>$campus,
+            'campus' => $campus,
+        ]);
     }
 
 }
