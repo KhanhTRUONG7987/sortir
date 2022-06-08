@@ -10,6 +10,7 @@ use App\Form\AfficherSortieType;
 use App\Form\AnnulerSortieType;
 use App\Form\CreateSortieType;
 use App\Form\ModifierSortieType;
+use App\Repository\EtatRepository;
 use App\Repository\SortieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SortieController extends AbstractController
 {
     #[Route('/createSortie', name: 'sortie_createSortie', methods: ['GET', 'POST'])]
-    public function createSortie(Request $request, SortieRepository $sortieRepository): Response
+    public function createSortie(Request $request, SortieRepository $sortieRepository, EtatRepository $etatRepository): Response
     {
         $sortie = new Sortie();
 
@@ -41,7 +42,13 @@ class SortieController extends AbstractController
 //                ->setEtatSorties($this->getEtat());
 
         //Mettre un etat à une sortie:
-        $sortie->setEtat( 'Créée');
+
+
+
+     $etat = $etatRepository->findOneBy(['libelle' => 'Créée']);
+        $sortie->setEtatSorties($etat);
+        $sortie->setOrganisateur($this->getUser());
+
 
 
 
