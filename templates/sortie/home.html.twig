@@ -61,10 +61,13 @@
                     <td>{{sortie.nbinscriptionsMax}} / {{sortie.nbinscriptionsMax}}</td>
                     <td>{{sortie.etatSorties.libelle}}</td>
                     <td>...</td>
-                    <td>{{sortie.id}}</td>
+                    <td>
+                        {#{{path('profil_participant', {'sortie.organisateur.pseudo'}) }}#}
+                        <a href=" {{path('profil_participant', {'id': sortie.organisateur.pseudo}) }}">{{sortie.organisateur.pseudo}}</a>
+                    </td>
                     <td>
                         <a href="{{ path('sortie_afficherSortie', {'id': sortie.id}) }}" >Afficher</a>
-                        {#                            <a onclick="sho" >Afficher</a>#}
+                        {#<a onclick="show" >Afficher</a>#}
                     </td>
                 </tr>
             {%endfor%}

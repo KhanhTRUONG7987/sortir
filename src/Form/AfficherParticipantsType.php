@@ -3,10 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Campus;
-use Doctrine\DBAL\Types\TextType;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,30 +17,58 @@ class AfficherParticipantsType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
+                //'class' => User::class,
+                //'choice_label' => 'nom',
+                // 'mapped' => false,
                 'label' => 'Nom :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
 
-            ->add('prenom', TextType::class, [
+            ->add('prenom',TextType::class, [
+                //'class' => User::class,
+                //'choice_label' => 'prenom',
+                //'mapped' => false,
                 'label' => 'Prénom :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
 
-            ->add('telephone', TextType::class, [
+            ->add('telephone',TextType::class, [
+                //'class' => User::class,
+                //'choice_label' => 'telephone',
+                //'mapped' => false,
                 'label' => 'Téléphone :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+        'class' => 'form-control'
+    ]
             ])
 
 
             ->add('email', EmailType::class, [
+
                 'label' => 'Email :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+
+
             ])
 
             ->add('estRattache', EntityType::class, [
+
                 'label' => 'Campus :',
-                'choice_label' =>'nom',
-                'class' => Campus::class
+                'choice_label'=> "nom",
+                'class' => Campus::class,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
         ;
     }
