@@ -1,6 +1,10 @@
 .imgButton {
-    max-width: 30%;
-    max-height: 30%;
+    max-width: 20%;
+    max-height: 20%;
+
+}
+img{
+    border-radius: 20%;
 }
 
 :root {
