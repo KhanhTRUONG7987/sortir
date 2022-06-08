@@ -5,25 +5,38 @@
 {% block main %}
 
     {# Affichage du participant #}
-    <h1>{{ participant.pseudo }}</h1>
 
-    <div>
-        <label for="nom">Nom : {{ participant.nom }}</label>
-    </div>
 
-    <div>
-        <label for="prenom"> Prénom : {{ participant.prenom }}</label>
-    </div>
+    <h1>Profil de {#{{pseudo}}#}</h1>
 
-    <div>
-        <label for="telephone"> Téléphone : {{ participant.telephone }}</label>
-    </div>
-    <div>
-        <label for="email">Email : {{ participant.email }}</label>
-    </div>
-    <div>
-        <label for="estRattache">Campus : {{ participant.estRattache }}</label>
-    </div>
+    {{form_start(participantForm)}}
+    {{form_row(participantForm.nom)}}
+    {{form_row(participantForm.prenom)}}
+    {{form_row(participantForm.telephone)}}
+    {{form_row(participantForm.email)}}
+    {{form_row(participantForm.estRattache)}}
+    {{form_end(participantForm)}}
 
+    {#<button type="submit" class="btn btn-primary">Rechercher</button>#}
+
+
+
+{#    <div>#}
+{#        <label >Nom : {{participant.nom }}</label>#}
+{#    </div>#}
+
+{#    <div>#}
+{#        <label for="prenom"> Prénom : {{participant.prenom }}</label>#}
+{#    </div>#}
+
+{#    <div>#}
+{#        <label for="telephone"> Téléphone : {{ participant.telephone }}</label>#}
+{#    </div>#}
+{#    <div>#}
+{#        <label for="email">Email : {{ participant.email }}</label>#}
+{#    </div>#}
+{#    <div>#}
+{#        <label for="estRattache">Campus : {{ participant.estRattache }}</label>#}
+{#    </div>#}
 
 {% endblock %}
