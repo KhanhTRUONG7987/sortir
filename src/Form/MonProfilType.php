@@ -21,22 +21,34 @@ class MonProfilType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'label' => 'Nom :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
 
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
 
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
 
             ->add('email', EmailType::class, [
                 'label' => 'Email :',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
 
             ->add('password', RepeatedType::class, [
@@ -45,7 +57,11 @@ class MonProfilType extends AbstractType
                 'options' => ['attr' => ['class' => 'password']],
                 'required' => false,
                 'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmation du mot de passe'],
+                'second_options' => ['label' => 'Confirmation du mot de passe',
+                    'attr' => [
+                        'class' => 'form-control'
+                    ]
+                ],
             ])
 
 
@@ -54,7 +70,10 @@ class MonProfilType extends AbstractType
 
                 'label' => 'Campus :',
                 'choice_label'=> "nom",
-                'class' => Campus::class
+                'class' => Campus::class,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
             ])
 
 

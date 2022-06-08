@@ -63,14 +63,14 @@ class CreateSortieType extends AbstractType
             ])
             ->add('campus', EntityType::class, [
                 'label' => 'Campus: ',
-                'class' => Campus::class, 'choice_label' => 'nom', 'mapped' => false,
+                'class' => Campus::class, 'choice_label' => 'nom', 'mapped' => true,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
             ->add('ville', EntityType::class, [
                 'label' => 'Ville: ',
-                'class' => Ville::class, 'choice_label' => 'nom', 'mapped' => false,
+                'class' => Ville::class, 'choice_label' => 'nom', 'mapped' => true,
                 'attr' => [
                     'class' => 'form-control'
                 ]

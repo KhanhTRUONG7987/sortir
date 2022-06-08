@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-    {# {% form_theme formCreateSortie 'bootstrap_4_layout.html.twig' %} #}
 
 {% block main %}
     <br>
@@ -9,7 +8,6 @@
             <h1>Créer une sortie</h1>
         </div>
         <br>
-
         <div class="row g-3 aligncenter">
             <div class="col">
                 {{ form_row(createSortieForm.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
@@ -79,17 +77,17 @@
         </div>
         <br><br>
         <div class="row g-3 container-fluid">
-            <div class="col" button button1>
+            <div class="col" button1 button >
                 {{ form_row(createSortieForm.Enregistrer) }}
             </div>
-            <div class="col" button button2>
+            <div class="col "  button2 button>
                 {{ form_row(createSortieForm.Publier) }}
             </div>
-            <div class="col" button button3>
+            <div class="col"  button3 button >
                 {{ form_row(createSortieForm.Annuler) }}
             </div>
         </div>
-        <br><br>
+        <br>
         {{ form_end(createSortieForm) }}
     </div>
 {% endblock %}

@@ -54,12 +54,12 @@ class AnnulerSortieType extends AbstractType
             ])
             ->add('Enregistrer', SubmitType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control button1',
                 ]
             ])
             ->add('Annuler', SubmitType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control button3',
                 ]
             ]);
     }

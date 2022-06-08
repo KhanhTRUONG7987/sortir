@@ -11,23 +11,33 @@
 
     {{ form_start(annulerUneSortie) }}
 
-
+<div class="col">
     {{ form_row(annulerUneSortie.nom, {'attr': {'placeholder': "Nom de sortie"}}) }}
+</div>
 
-    {{ form_row(annulerUneSortie.dateHeureDebut) }}
+    <div class="col">
+        {{ form_row(annulerUneSortie.dateHeureDebut) }}
+    </div>
 
-    {{ form_row(annulerUneSortie.campus) }}
+    <div class="col">
+        {{ form_row(annulerUneSortie.campus) }}
+    </div>
 
-    {{ form_row(annulerUneSortie.lieuxSorties) }}
+    <div class="col">
+        {{ form_row(annulerUneSortie.lieuxSorties) }}
+    </div>
 
-    {{ form_row(annulerUneSortie.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
+    <div class="col">
+        {{ form_row(annulerUneSortie.infosSortie, {'attr': {'placeholder': "Description de sortie"}}) }}
+    </div>
+
 
     <br><br><br><br>
-    <div class="row g-3">
-        <div class="col">
+    <div class="row g-3 container-fluid">
+        <div class="col" button button1>
             {{ form_row(annulerUneSortie.Enregistrer) }}
         </div>
-        <div class="col">
+        <div class="col" button button3>
             {{ form_row(annulerUneSortie.Annuler) }}
         </div>
     </div>

@@ -22,9 +22,15 @@ class SortieController extends AbstractController
     public function createSortie(Request $request, SortieRepository $sortieRepository): Response
     {
         $sortie = new Sortie();
-        //$sortie ->setOrganiser($this->);
 
-        /*->setLieuxSorties($this->get)
+        /**
+         * @var User $user
+         */
+
+        /*$user = $this->getUser();
+        $user->
+        $sortie ->setOrganiser($user)
+                ->setLieuxSorties()
         ->setEtat($this->getSortie())
         ->setSortieOrganisee($this->getSortie())
         ->setEtatSorties($this->getEtat());*/
