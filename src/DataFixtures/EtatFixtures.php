@@ -15,6 +15,11 @@ class EtatFixtures extends Fixture
 
         $manager->persist($etat);
 
+        $etat1 = new Etat();
+        $etat1->setLibelle("En Cours");
+
+        $manager->persist($etat1);
+
         $manager->flush();
     }
 }

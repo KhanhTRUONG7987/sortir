@@ -23,6 +23,7 @@ class ParticipantFixture extends Fixture
     }
     public function addUser($manager){
 
+        //#################### user 1 #############################
         $campus = $manager->getRepository(Campus::class)->findAll();
         $user = new User();
         $user->setEmail('QuQu@gmail.com');
@@ -34,7 +35,7 @@ class ParticipantFixture extends Fixture
             $plaintextPassword
         );
         $user->setPassword($hashedPassword);
-
+        //$user1->Pseudo('QuQu');
         $user->setNom('DEBOUDT');
         $user->setPrenom('Quentin');
         $user->setTelephone('0687789856');
@@ -43,6 +44,28 @@ class ParticipantFixture extends Fixture
         $user->setRoles((array)'ROLE_ADMIN');
 
         $manager->persist($user);
+
+        //#################### user 2 #############################
+        $user1 = new User();
+        $user1->setEmail('QuQu@gmail.com');
+
+        $plaintextPassword = 456;
+        // hash the password (based on the security.yaml config for the $user class)
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $user1,
+            $plaintextPassword
+        );
+        $user1->setPassword($hashedPassword);
+        //$user1->Pseudo('LéLé');
+        $user1->setNom('Turgeon');
+        $user1->setPrenom('Léa');
+        $user1->setTelephone('0615345856');
+        $user1->setActif(true);
+        $user1->setEstRattache($campus[1]);
+        $user1->setRoles((array)'ROLE_USER');
+
+        $manager->persist($user1);
+
         $manager->flush();
     }
 }
