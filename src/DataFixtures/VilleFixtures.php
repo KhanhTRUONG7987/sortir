@@ -22,6 +22,7 @@ class VilleFixtures extends Fixture
             ->setCodePostal(44000);
 
 
+
         $manager->persist($ville);
 
         $manager->flush();
