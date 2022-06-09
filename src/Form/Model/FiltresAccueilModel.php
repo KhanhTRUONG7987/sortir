@@ -5,6 +5,11 @@ namespace App\Form\Model;
 
 
 class FiltresAccueilModel
+
+/*
+ * Création d'un model permettant de déclarer des variables n'appartenant pas à la même entité
+ *
+ */
 {
     private $campus;
     private $motCles;

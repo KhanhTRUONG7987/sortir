@@ -9,7 +9,7 @@
 
         <h2>Mon profil</h2>
 
-        {# affichage du formulaire #}
+        {# affichage du formulaire du profil connecté #}
         {{form_start(nouveauProfilParticipantForm)}}
         {{form_row(nouveauProfilParticipantForm.prenom)}}
         {{form_row(nouveauProfilParticipantForm.nom)}}
@@ -20,6 +20,8 @@
 
         {{form_end(nouveauProfilParticipantForm)}}
 
+
+        {#redirection du bouton annuler vers la page d'accueil#}
         <a href="{{path('home')}}"> <button type="reset" class="btn btn-secondary" >Annuler</button></a>
     </div>
 

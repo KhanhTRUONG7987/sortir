@@ -22,6 +22,8 @@
     <div id="filtre">
         <h2>Filtrer les sorties</h2>
             {#Afficher le formulaire#}
+
+
             {{form_start(searchFiltersForm)}}
             {{form_row(searchFiltersForm.campus)}}
             {{form_row(searchFiltersForm.motCles)}}
@@ -56,10 +58,12 @@
                     <td>{{sortie.etatSorties.libelle}}</td>
                     <td>...</td>
                     <td>
-                        {#{{path('profil_participant', {'sortie.organisateur.pseudo'}) }}#}
+                        {#redirige vers l'affichage du participant ayant organisé une sortie#}
                         <a href=" {{path('profil_participant', {'id': sortie.organisateur.pseudo}) }}">{{sortie.organisateur.pseudo}}</a>
                     </td>
                     <td>
+
+                        {#redirige vers l'affichage du détail de la sortie#}
                         <a href="{{ path('sortie_afficherSortie', {'id': sortie.id}) }}" >Afficher</a>
                         {#<a onclick="show" >Afficher</a>#}
                     </td>

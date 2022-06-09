@@ -15,6 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class FiltresAccueilController extends AbstractController
 {
 
+                   //gestion de l'affichage de la page d'accueil:
+
     #[Route('/home', name: 'home')]
     public function accueil(SortieRepository $sortieRepository, Request $request): Response
     {
@@ -28,17 +30,13 @@ class FiltresAccueilController extends AbstractController
         $listSortie = $sortieRepository->findActivityByFilters($filtresAccueilModel);
 
 
-        //######################## recuperer List de sortie ##################################
+        //######################## récuperer la liste des sorties ##################################
 
-//        $sortieRepository->findAll();
-//        $number = 0;
+
         return $this->render('sortie/home.html.twig', [
             'controller_name' => 'FiltresAccueilController',
             'listSortie' => $listSortie,
-          //  'number' => $number,
 
-            // retourner le formulaire des filtres
-            //'filtresAccueilModel' => $filtresAccueilModel,
             'searchFiltersForm' => $searchFiltersForm->createView()
         ]);
     }
