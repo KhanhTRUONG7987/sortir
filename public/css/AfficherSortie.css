@@ -4,14 +4,8 @@
     margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
-    width: 60%;
+    width: 48%;
+    padding: 10px;
 
 }
-#AfficherSortieFormGauche{
-    border: 1px solid #5eb5e0;
 
-}
-#AfficherSortieFormDroite{
-    border: 1px solid #5eb5e0;
-
-}
