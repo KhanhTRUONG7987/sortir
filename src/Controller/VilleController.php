@@ -65,7 +65,7 @@ class VilleController extends AbstractController
     public function show($id, VilleRepository $villeRepository, Request $request): Response
     {
         $ville = $villeRepository->find($id);
-        $afficherUneVille = $this->createForm(AfficherVilleType::class, $ville);
+        $afficherUneVille = $this->createForm(VilleType::class, $ville);
         $afficherUneVille->handleRequest($request);
         return $this->render('ville/show.html.twig', [
             'id' => $ville,
