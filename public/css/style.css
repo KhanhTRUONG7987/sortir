@@ -16,6 +16,7 @@ img{
     --text-3: #333333;
     --text-4: #F6F5FA;
     --fond: #EBF4FB;
+    --colorQuentin: #158CBA;
 
 }
 
@@ -45,7 +46,7 @@ html, body{
 }
 
 .button2 {
-    background-color: var(--secondary-color);
+    background-color: var(--colorQuentin);
     color: var(--text-1) !important;
 }
 
@@ -55,6 +56,7 @@ html, body{
 }
 
 h1 {
+
     color: var(--primary-color);
     text-align: center;
 }
