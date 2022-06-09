@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Lieu;
 use App\Form\LieuType;
 use App\Repository\LieuRepository;
-use App\Repository\VilleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,22 +22,9 @@ class LieuController extends AbstractController
     }
 
     #[Route('/new', name: 'lieu_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, LieuRepository $lieuRepository, VilleRepository $villeRepository): Response
+    public function new(Request $request, LieuRepository $lieuRepository): Response
     {
         $lieu = new Lieu();
-        /*
-         * @var Ville $ville
-         */
-        $ville = $villeRepository->find('id');
-        $lieu->setVilleLieux($ville);
-
-//        $lieu->setVilleLieux($this->getVille());
-        $lieu->setNom();
-        $lieu->setRue();
-        $lieu->setLongitude();
-        $lieu->setLatitude();
-
-
         $form = $this->createForm(LieuType::class, $lieu);
         $form->handleRequest($request);
 
@@ -48,17 +34,21 @@ class LieuController extends AbstractController
             return $this->redirectToRoute('lieu_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('lieu/index.html.twig', [
+        return $this->render('lieu/new.html.twig', [
             'lieu' => $lieu,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
     #[Route('/{id}', name: 'lieu_show', methods: ['GET'])]
-    public function show(Lieu $lieu): Response
+    public function show($id, LieuRepository $lieuRepository, Request $request): Response
     {
-        return $this->render('lieu/index.html.twig', [
-            'lieu' => $lieu,
+        $lieu = $lieuRepository->find($id);
+        $afficherUnLieu = $this->createForm(LieuType::class, $lieu);
+        $afficherUnLieu->handleRequest($request);
+        return $this->render('lieu/show.html.twig', [
+            'lieu.id'=>$lieu,
+            'form' => $form->createview(),
         ]);
     }
 
@@ -74,20 +64,19 @@ class LieuController extends AbstractController
             return $this->redirectToRoute('lieu_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('lieu/index.html.twig', [
+        return $this->render('lieu/edit.html.twig', [
             'lieu' => $lieu,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
-    #[Route('/{id}', name: 'lieu_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_lieu_delete', methods: ['POST'])]
     public function delete(Request $request, Lieu $lieu, LieuRepository $lieuRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $lieu->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$lieu->getId(), $request->request->get('_token'))) {
             $lieuRepository->remove($lieu, true);
         }
 
         return $this->redirectToRoute('lieu_index', [], Response::HTTP_SEE_OTHER);
     }
-
 }
