@@ -40,15 +40,22 @@ class SortieController extends AbstractController
         $createSortieForm->handleRequest($request);
         //#######################
 
+
         if ($createSortieForm->isSubmitted() && $createSortieForm->isValid()) {
 
+            $etat = $etatRepository->findOneBy(['libelle' => 'Ouverte']);
+            $sortie->setEtatSorties($etat);
+
+//
+//            $clicked = $request->request->get('clicked');
+//
 //            //### Publier ###
-//            if(){
+//            if($clicked === 'Enregistrer'){
 //                $etat = $etatRepository->findOneBy(['libelle' => 'Ouverte']);
 //                $sortie->setEtatSorties($etat);
 //            }
 //            //### Enregistrer ###
-//            if(){
+//            if($clicked === 'Publier'){
 //                $etat = $etatRepository->findOneBy(['libelle' => 'En creation']);
 //                $sortie->setEtatSorties($etat);
 //            }
