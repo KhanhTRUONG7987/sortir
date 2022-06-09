@@ -5,7 +5,7 @@
 
 
 {% block main %}
-    <link rel="stylesheet" href="{{ asset('css/Sortie.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sortie.css') }}">
 
     <div id="Header">
 
@@ -18,24 +18,18 @@
         </div>
     </div>
 
+
     <div id="filtre">
         <h2>Filtrer les sorties</h2>
-
-        {#Afficher le formulaire#}
-
-        {{form_start(searchFiltersForm)}}
-        {{form_row(searchFiltersForm.campus)}}
-        {{form_row(searchFiltersForm.motCles)}}
-        {{form_row(searchFiltersForm.dateHeureDebut)}}
-        {{form_row(searchFiltersForm.dateLimiteInscription)}}
-        {{form_end(searchFiltersForm)}}
-        {#<button type="submit" class="btn btn-primary">Rechercher</button>#}
-
-
-        <div >
-
+            {#Afficher le formulaire#}
+            {{form_start(searchFiltersForm)}}
+            {{form_row(searchFiltersForm.campus)}}
+            {{form_row(searchFiltersForm.motCles)}}
+            {{form_row(searchFiltersForm.dateHeureDebut)}}
+            {{form_row(searchFiltersForm.dateLimiteInscription)}}
+        <div id="filtre2">
+            {{form_end(searchFiltersForm)}}
         </div>
-
     </div>
 
     <div id="lstSorties">

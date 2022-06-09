@@ -43,18 +43,18 @@ class FiltresAccueilType extends AbstractType
             ->add('dateHeureDebut', DateType:: class, [
                 'label' => 'Entre le ',
                 'html5' =>false,
-                "widget" => 'single_text',
+                //"widget" => 'single_text',
                 'attr' =>['class' => 'datepicker'],
-                'format'=>'dd/MM/yyyy',
+                //'format'=>'dd/MM/yyyy',
                 'required' => false
             ])
 
             ->add('dateLimiteInscription', DateType:: class, [
                 'label' => 'Et le ',
                 'html5' =>false,
-                "widget" => 'single_text',
+                //"widget" => 'single_text',
                 'attr' =>['class' => 'datepicker'],
-                'format'=>'dd/MM/yyyy',
+                //'format'=>'dd/MM/yyyy',
                 'required' => false
 
             ])

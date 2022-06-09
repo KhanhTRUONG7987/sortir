@@ -7,6 +7,7 @@ img{
     border-radius: 20%;
 }
 
+
 :root {
     --primary-color: #004982;
     --secondary-color: #011f39;
@@ -19,6 +20,8 @@ img{
     --colorQuentin: #158CBA;
 
 }
+
+
 
 html, body{
     font-family: 'Open Sans', sans-serif;
