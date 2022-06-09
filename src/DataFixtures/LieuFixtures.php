@@ -11,7 +11,7 @@ class LieuFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        ///################### villes 1 ###########################
+        ///################### lieux 1 ###########################
         $ville = $manager->getRepository(Ville::class)->findAll();
         //var_dump("villes: ", $ville);
         $lieu = new Lieu();
@@ -24,7 +24,7 @@ class LieuFixtures extends Fixture
                 ->setVilleLieux($ville[0]);
         $manager->persist($lieu);
 
-        ///################### villes 1 ###########################
+        ///################### lieux 1 ###########################
         $ville1 = $manager->getRepository(Ville::class)->findAll();
         //var_dump("villes: ", $ville);
         $lieu1 = new Lieu();
