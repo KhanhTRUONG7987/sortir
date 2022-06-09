@@ -5,24 +5,23 @@
 {% block main %}
     <link rel="stylesheet" href="{{ asset('css/Profil.css') }}">
 
-    <h2>Mon profil</h2>
+    <div id="ProfilParticipant">
 
-    {# affichage du formulaire #}
+        <h2>Mon profil</h2>
 
-    {{form_start(nouveauProfilParticipantForm)}}
+        {# affichage du formulaire #}
+        {{form_start(nouveauProfilParticipantForm)}}
+        {{form_row(nouveauProfilParticipantForm.prenom)}}
+        {{form_row(nouveauProfilParticipantForm.nom)}}
+        {{form_row(nouveauProfilParticipantForm.telephone)}}
+        {{form_row(nouveauProfilParticipantForm.password)}}
+        {{form_row(nouveauProfilParticipantForm.email)}}
+        {{form_row(nouveauProfilParticipantForm.estRattache)}}
 
+        {{form_end(nouveauProfilParticipantForm)}}
 
-    {{form_row(nouveauProfilParticipantForm.prenom)}}
-    {{form_row(nouveauProfilParticipantForm.nom)}}
-    {{form_row(nouveauProfilParticipantForm.telephone)}}
-    {{form_row(nouveauProfilParticipantForm.password)}}
-    {{form_row(nouveauProfilParticipantForm.email)}}
-    {{form_row(nouveauProfilParticipantForm.estRattache)}}
-
-    {{form_end(nouveauProfilParticipantForm)}}
-
-    <a href="{{path('home')}}"> <button type="reset" class="btn btn-secondary" >Annuler</button></a>
-
+        <a href="{{path('home')}}"> <button type="reset" class="btn btn-secondary" >Annuler</button></a>
+    </div>
 
 
 
