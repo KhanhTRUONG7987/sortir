@@ -20,7 +20,20 @@
 /*############################## filtre #############################*/
 
 #filtre{
-    min-height: 200px;
-
+    border: 1px solid #5eb5e0;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 25%;
+}
+#filtre2{
+    border: 1px solid #5eb5e0;
+    border-radius: 10px;
+    padding: 7px;
+    margin-top: 10px;
 }
 
+/*############################## ldtSortie #############################*/
+#lstSorties{
+    margin: 10px;
+}

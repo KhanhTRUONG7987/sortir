@@ -3,26 +3,24 @@
 {% block title %}{{ parent()}} - Mon Profil{% endblock %}
 
 {% block main %}
-
-    <h2>Mon profil</h2>
-
-    {# affichage du formulaire #}
-
-    {{form_start(nouveauProfilParticipantForm)}}
+    <link rel="stylesheet" href="{{ asset('css/Profil.css') }}">
 
 
-    {{form_row(nouveauProfilParticipantForm.prenom)}}
-    {{form_row(nouveauProfilParticipantForm.nom)}}
-    {{form_row(nouveauProfilParticipantForm.telephone)}}
-    {{form_row(nouveauProfilParticipantForm.password)}}
-    {{form_row(nouveauProfilParticipantForm.email)}}
-    {{form_row(nouveauProfilParticipantForm.estRattache)}}
+    <div id="ProfilParticipant">
+        <h2>Mon profil</h2>
+        {# affichage du formulaire #}
+        {{form_start(nouveauProfilParticipantForm)}}
+        {{form_row(nouveauProfilParticipantForm.prenom)}}
+        {{form_row(nouveauProfilParticipantForm.nom)}}
+        {{form_row(nouveauProfilParticipantForm.telephone)}}
+        {{form_row(nouveauProfilParticipantForm.password)}}
+        {{form_row(nouveauProfilParticipantForm.email)}}
+        {{form_row(nouveauProfilParticipantForm.estRattache)}}
 
-    {#<button type="submit" class="btn btn-primary">Modifier</button>#}
-    <button type="reset" class="btn btn-secondary">Annuler</button>
+        {#<button type="submit" class="btn btn-primary">Modifier</button>#}
+        <button type="reset" class="btn btn-secondary">Annuler</button>
 
-    {{form_end(nouveauProfilParticipantForm)}}
-
-
+        {{form_end(nouveauProfilParticipantForm)}}
+    </div>
 
 {% endblock %}
