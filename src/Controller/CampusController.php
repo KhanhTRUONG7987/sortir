@@ -25,7 +25,7 @@ class CampusController extends AbstractController
     public function indexAction(Request $request, CampusRepository $campusRepository): Response
     {
 
-        return $this->render('campus/index.html.twig', array());
+        return $this->render(':campus:index.html.twig', array());
     }
 
     /**
@@ -39,24 +39,32 @@ class CampusController extends AbstractController
         $result = $campusRepository->findBySearch(array("find"=>$value));
         //Here you can return your data in JSON format or in a twig template
     }
+
     #[Route('/new', name: 'campus_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CampusRepository $campusRepository): Response
     {
         $campus = new Campus();
-        $campus->setNom("NANTES");
-        //$form = $this->createForm(CampusType::class, $campus);
-        //$form->handleRequest($request);
+        $form = $this->createForm(CampusType::class, $campus);
+        $form->handleRequest($request);
 
-        //if ($form->isSubmitted() && $form->isValid()) {
-        $campusRepository->add($campus, true);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $campusRepository->add($campus, true);
 
-        return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
-        //}
+            return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
+        }
 
-        //return $this->renderForm('campus/index.html.twig', [
-        // 'campus' => $campus,
-        //'form' => $form,
-        //]);
+        return $this->render('campus/new.html.twig', [
+            'campus' => $campus,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/{id}', name: 'campus_show', methods: ['GET'])]
+    public function show(Campus $campus): Response
+    {
+        return $this->render('campus/show.html.twig', [
+            'campus' => $campus,
+        ]);
     }
 
     #[Route('/{id}/edit', name: 'campus_edit', methods: ['GET', 'POST'])]
@@ -71,26 +79,19 @@ class CampusController extends AbstractController
             return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('campus/index.html.twig', [
-            'id'=>$campus,
+        return $this->render('campus/edit.html.twig', [
             'campus' => $campus,
-            'form' => $form,
-            'campuses'=> $campusRepository->findAll(),
+            'form' => $form->createView(),
         ]);
     }
 
     #[Route('/{id}', name: 'campus_delete', methods: ['POST'])]
     public function delete(Request $request, Campus $campus, CampusRepository $campusRepository): Response
     {
-       // if ($this->isCsrfTokenValid('delete'.$campus->getId(), $request->request->get('_token'))) {
         if ($this->isCsrfTokenValid('delete'.$campus->getId(), $request->request->get('_token'))) {
             $campusRepository->remove($campus, true);
         }
 
-        return $this->redirectToRoute('campus_index', [
-            'id'=>$campus,
-            'campus' => $campus,
-        ]);
+        return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
     }
-
 }

@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Ville;
+use App\Form\AfficherSortieType;
+use App\Form\AfficherVilleType;
 use App\Form\VilleType;
-use App\Repository\CampusRepository;
 use App\Repository\VilleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,9 +36,9 @@ class VilleController extends AbstractController
     #[Route('/', name: 'search', methods: ['GET'])]
     public function searchAction(Request $request, VilleRepository $villeRepository)
     {
-        $value = $request->get("find");
+        $value =  $request->get("find");
         //implement your search here,
-        $result = $villeRepository->findBySearch(array("find" => $value));
+        $result = $villeRepository->findBySearch(array("find"=>$value));
         //Here you can return your data in JSON format or in a twig template
     }
 
@@ -45,57 +46,58 @@ class VilleController extends AbstractController
     public function new(Request $request, VilleRepository $villeRepository): Response
     {
         $ville = new Ville();
-        $ville->setNom("Nantes");
-        $ville->setCodePostal("49000");
-        //$form = $this->createForm(VilleType::class, $ville);
-        //$form->handleRequest($request);
+        $createVilleform = $this->createForm(VilleType::class, $ville);
+        $createVilleform->handleRequest($request);
 
-        //if ($form->isSubmitted() && $form->isValid()) {
-        $villeRepository->add($ville, true);
+        if ($createVilleform->isSubmitted() && $createVilleform->isValid()) {
+            $villeRepository->add($ville, true);
 
-        return $this->redirectToRoute('ville_index', [], Response::HTTP_SEE_OTHER);
-        //}
+            return $this->redirectToRoute('ville_index', [], Response::HTTP_SEE_OTHER);
+        }
 
-        //return $this->renderForm('ville/new.html.twig', [
-        // 'ville' => $ville,
-        //'form' => $form,
-        //]);
+        return $this->render('ville/new.html.twig', [
+            'ville' => $ville,
+            'form' => $createVilleform->createView(),
+        ]);
     }
 
     #[Route('/{id}', name: 'ville_show', methods: ['GET'])]
-    public function show(Ville $ville): Response
+    public function show($id, VilleRepository $villeRepository, Request $request): Response
     {
-        return $this->render('ville/index.html.twig', [
-            'ville' => $ville,
+        $ville = $villeRepository->find($id);
+        $afficherUneVille = $this->createForm(VilleType::class, $ville);
+        $afficherUneVille->handleRequest($request);
+        return $this->render('ville/show.html.twig', [
+            'id' => $ville,
+            'afficherUneVille' => $afficherUneVille->createView(),
         ]);
     }
 
     #[Route('/{id}/edit', name: 'ville_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Ville $ville, VilleRepository $villeRepository): Response
     {
-        $form = $this->createForm(VilleType::class, $ville);
-        $form->handleRequest($request);
+        $modifierVilleForm = $this->createForm(VilleType::class, $ville);
+        $modifierVilleForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($modifierVilleForm->isSubmitted() && $modifierVilleForm->isValid()) {
             $villeRepository->add($ville, true);
 
             return $this->redirectToRoute('ville_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('ville/index.html.twig', [
+        return $this->render('ville/edit.html.twig', [
             'ville' => $ville,
-            'form' => $form,
+            'form' => $modifierVilleForm->createView(),
         ]);
     }
 
     #[Route('/{id}', name: 'ville_delete', methods: ['POST'])]
     public function delete(Request $request, Ville $ville, VilleRepository $villeRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $ville->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$ville->getId(), $request->request->get('_token'))) {
             $villeRepository->remove($ville, true);
         }
 
         return $this->redirectToRoute('ville_index', [], Response::HTTP_SEE_OTHER);
     }
-//    qsjq
 }

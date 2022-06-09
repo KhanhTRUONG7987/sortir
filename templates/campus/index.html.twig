@@ -31,22 +31,15 @@
                     <td>{{ campus.nom }}</td>
                     <td>
                         <a href="{{ path('campus_edit', {'id': campus.id}) }}">Modifier</a>
-                        <a>-</a>
-                        <a href="{{ path('campus_delete', {'id': campus.id}) }}">Supprimer</a>
                     </td>
                 </tr>
             {% else %}
             {% endfor %}
-            <tr>
-                <td>
-                    <label>
-                        <input type="text" class="form-control" placeholder="Nom de campus" name="nom_new">
-                    </label>
-                </td>
-                <td>
-                    <a href="{{ path('campus_new') }}">Ajouter</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <a href="{{ path('campus_new') }}">Ajouter</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

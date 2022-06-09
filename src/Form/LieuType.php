@@ -3,10 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Lieu;
+use App\Entity\Ville;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,41 +16,36 @@ class LieuType extends AbstractType
     {
         $builder
             ->add('nom',TextType::class, [
-            'attr' => [
-        'class' => 'form-control'
-    ]])
-            ->add('rue', TextType::class,[
-                'attr' => [
-                    'class' => 'form-control'
-                ]
-            ])
-            ->add('latitude', EntityType::class, [
-                'label' => 'Latitude: ',
-                'class' => Lieu::class, 'choice_label' => 'latitude', 'mapped' => false,
+                'label' => 'Nom du lieu:',
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-            ->add('longitude', EntityType::class, [
-                'label' => 'Longitude: ',
-                'class' => Lieu::class, 'choice_label' => 'longitude', 'mapped' => false,
+            ->add('rue',TextType::class, [
+                'label' => 'Rue:',
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-            ->add('villeLieux', EntityType::class, [
+            ->add('latitude',TextType::class, [
+                'label' => 'latitude:',
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-            ->add('Enregistrer', SubmitType::class, [
+            ->add('longitude',TextType::class, [
+                'label' => 'longitude:',
+                'required' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-            ->add('Annuler', SubmitType::class, [
+            ->add('villeLieux',EntityType::class, [
+                'label' => 'Ville: ',
+                'class' => Ville::class, 'choice_label' => 'nom', 'mapped' => true,
                 'attr' => [
                     'class' => 'form-control'
                 ]
