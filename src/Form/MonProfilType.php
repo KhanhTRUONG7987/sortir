@@ -59,6 +59,9 @@ class MonProfilType extends AbstractType
                 'required' => false,
                 'mapped'=>false,
                 'first_options' => ['label' => 'Mot de passe'],
+                'attr' => [
+                    'class' => 'form-control'
+                ],
                 'second_options' => ['label' => 'Confirmation du mot de passe',
                     'attr' => [
                         'class' => 'form-control'
@@ -78,7 +81,7 @@ class MonProfilType extends AbstractType
                 ]
             ])
 
-            ->add('submit', SubmitType::class, [
+            ->add('enregistrer', SubmitType::class, [
                 'label' => 'Enregistrer',
                 'attr' => [
                     'class' => 'btn btn-primary',

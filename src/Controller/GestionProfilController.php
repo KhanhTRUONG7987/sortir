@@ -5,7 +5,6 @@ namespace App\Controller;
 
 use App\Entity\ProfilPhoto;
 use App\Entity\User;
-use App\Form\ModifMotDePasseType;
 use App\Form\MonProfilType;
 use App\Form\ProfilPhotoType;
 use App\Repository\UserRepository;
@@ -27,28 +26,27 @@ class GestionProfilController extends AbstractController
 
         // Création du formulaire contenant les données de la classe MonProfilType pour obtenir les infos du User connecté
         $nouveauProfilParticipantForm = $this->createForm(MonProfilType::class, $user);
-
-
         $nouveauProfilParticipantForm->handleRequest($request);
 
         //traitement du formulaire
-        if ($nouveauProfilParticipantForm->isSubmitted()) {
-            if ($nouveauProfilParticipantForm->isValid()) {
+        if ($nouveauProfilParticipantForm->isSubmitted() && $nouveauProfilParticipantForm->isValid()) {
 
-                //conditionne cette partie à la présence d'un nouveu mot de passe
-                //if($passwordHashed ->)
-
+            //conditionne cette partie à la présence d'un nouveu mot de passe
+            if ($nouveauProfilParticipantForm['password']->getData()) {
+                $nouveauMDP = $nouveauProfilParticipantForm ['password']->getData();
 
                 //hashage du nouveau mot de passe
-                $hash = $passwordHashed->hashPassword($user, $nouveauProfilParticipantForm->get('password')->getData());
+                $hash = $passwordHashed->hashPassword($user, $nouveauMDP);
                 $this->getUser()->setPassword($hash);
+                $this->addFlash("success", "Votre mot de passe a été modifié avec succès");
 
-                $userRepository->add($user, true);
-
-
-                $this->addFlash("success", "Votre profil a été modifié avec succès");
-                return $this->redirectToRoute('monprofil');
             }
+
+            $userRepository->add($user, true);
+            $this->addFlash("success", "Votre profil a été modifié avec succès");
+            return $this->redirectToRoute('monprofil');
+
+
         }
 
 
@@ -91,10 +89,11 @@ class GestionProfilController extends AbstractController
 //    }
 
     #[Route('/monprofil/photo', name: 'photo')]
-    public function chargerPhoto(Request $request, UserRepository $userRepository, ): Response{
+    public function chargerPhoto(Request $request, UserRepository $userRepository,): Response
+    {
 
         $profilPhoto = new ProfilPhoto();
-        $profilPhotoForm =$this->createForm(ProfilPhotoType::class, $profilPhoto);
+        $profilPhotoForm = $this->createForm(ProfilPhotoType::class, $profilPhoto);
 
         return $this->render('gestion_profil/gestionProfil.html.twig', array(
             'profilPhotoForm' => $profilPhotoForm->createView(),
@@ -102,12 +101,6 @@ class GestionProfilController extends AbstractController
 
 
     }
-
-
-
-
-
-
 
 
 }
