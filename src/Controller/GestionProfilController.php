@@ -39,11 +39,15 @@ class GestionProfilController extends AbstractController
                 $hash = $passwordHashed->hashPassword($user, $nouveauMDP);
                 $this->getUser()->setPassword($hash);
                 $this->addFlash("success", "Votre mot de passe a été modifié avec succès");
+
             }
+
 
             $userRepository->add($user, true);
             $this->addFlash("success", "Votre profil a été modifié avec succès");
             return $this->redirectToRoute('monprofil');
+
+
         }
 
 
@@ -51,6 +55,8 @@ class GestionProfilController extends AbstractController
             ,]);
     }
 
+
+    //Début de méthode pour le chargement de la photo de profil,
     #[Route('/monprofil/photo', name: 'photo')]
     public function chargerPhoto(Request $request, UserRepository $userRepository,): Response
     {
@@ -61,5 +67,9 @@ class GestionProfilController extends AbstractController
         return $this->render('gestion_profil/gestionProfil.html.twig', array(
             'profilPhotoForm' => $profilPhotoForm->createView(),
         ));
+
+
     }
+
+
 }

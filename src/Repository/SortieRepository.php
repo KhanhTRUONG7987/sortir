@@ -42,6 +42,8 @@ class SortieRepository extends ServiceEntityRepository
         }
     }
 
+    //Mise en place du QueryBuiler
+
     public function findActivityByFilters(FiltresAccueilModel $filtresAccueilModel)
     {
         // 's' pour sortie

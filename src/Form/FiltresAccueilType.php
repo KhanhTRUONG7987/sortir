@@ -25,38 +25,45 @@ class FiltresAccueilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
+
             ->setMethod('get')
             ->add('campus', EntityType::class, [
                 'label' => 'Campus :',
-                'class' => Campus::class,
+                'class' =>Campus::class,
                 'choice_label' => 'nom',
                 'required' => false,
             ])
+
             ->add('motCles', SearchType::class, [
                 'label' => 'Le nom contient :',
-                'required' => false,
+                'required' =>false,
             ])
+
             ->add('dateHeureDebut', DateType:: class, [
                 'label' => 'Entre le ',
-                'html5' => false,
+                'html5' =>false,
                 //"widget" => 'single_text',
-                'attr' => ['class' => 'datepicker'],
+                'attr' =>['class' => 'datepicker'],
                 //'format'=>'dd/MM/yyyy',
                 'required' => false
             ])
+
             ->add('dateLimiteInscription', DateType:: class, [
                 'label' => 'Et le ',
-                'html5' => false,
+                'html5' =>false,
                 //"widget" => 'single_text',
-                'attr' => ['class' => 'datepicker'],
+                'attr' =>['class' => 'datepicker'],
                 //'format'=>'dd/MM/yyyy',
                 'required' => false
 
             ])
+
             ->add('estOrganisateur', CheckboxType:: class, [
                 'label' => "Sorties dont je suis l'organisateur/organisatrice ",
                 'required' => false,
             ])
+
             ->add('inscrit', CheckboxType:: class, [
                 'label' => "Sorties auxquelles je suis inscrit/inscrite ",
                 'required' => false,
@@ -69,9 +76,16 @@ class FiltresAccueilType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-primary',
                 ]
-            ]);
+            ])
+
+            ;
     }
 
+
+
+
+
+    //faire appel à FiltresAccueilModel
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
