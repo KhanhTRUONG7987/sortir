@@ -3,41 +3,42 @@
 {% block title %}Gérer les lieux{% endblock %}
 
 {% block main %}
-<br>
+    <br>
     <div class="container">
         <h1>Gérer les lieux</h1>
-    <table class="table">
-        <thead>
+        <br>
+        <table class="table">
+            <thead>
             <tr>
                 <th>Ville</th>
                 <th>Nom</th>
                 <th>Rue</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for lieu in lieus %}
+            </thead>
+            <tbody>
+            {% for lieu in lieus %}
+                <tr>
+                    {# <td>{{ lieu.villeLieux }}</td> #}
+                    <td>{{ lieu.id }}</td>
+                    <td>{{ lieu.nom }}</td>
+                    <td>{{ lieu.rue }}</td>
+                    <td>{{ lieu.latitude }}</td>
+                    <td>{{ lieu.longitude }}</td>
+                    <td>
+                        <a href="{{ path('lieu_edit', {'id': lieu.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+            {% endfor %}
             <tr>
-                {#<td>{{ lieu.villeLieux }}</td>#}
-                <td>{{ lieu.id }}</td>
-                <td>{{ lieu.nom }}</td>
-                <td>{{ lieu.rue }}</td>
-                <td>{{ lieu.latitude }}</td>
-                <td>{{ lieu.longitude }}</td>
                 <td>
-                    <a href="{{ path('lieu_edit', {'id': lieu.id}) }}">Modifier</a>
+                    <a href="{{ path('lieu_new') }}">Ajouter</a>
                 </td>
             </tr>
-        {% else %}
-        {% endfor %}
-        <tr>
-            <td>
-                <a href="{{ path('lieu_new') }}">Ajouter</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
     </div>
 {% endblock %}

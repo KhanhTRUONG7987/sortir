@@ -29,7 +29,6 @@ class ModifierSortieType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('dateHeureDebut', DateTimeType::class, [
                 'label' => 'Date et heure de la sortie: ',
                 'widget' => 'single_text',
@@ -37,14 +36,13 @@ class ModifierSortieType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            ->add('dateLimiteInscription', DateType::class,[
+            ->add('dateLimiteInscription', DateType::class, [
                 'label' => 'Date limite d\'inscription :',
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('nbinscriptionsMax', NumberType::class, [
                 'label' => 'Nombre de places: ',
                 'required' => false,
@@ -52,7 +50,6 @@ class ModifierSortieType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('duree', NumberType::class, [
                 'label' => 'Durée:',
                 'required' => false,
@@ -67,80 +64,69 @@ class ModifierSortieType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
-            ->add('campus',EntityType::class, [
+            ->add('campus', EntityType::class, [
                 'label' => 'Campus: ',
-                'class' => Campus::class, 'choice_label' => 'nom', 'mapped'=>false,
+                'class' => Campus::class, 'choice_label' => 'nom', 'mapped' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
-            ->add('lieuxSorties',EntityType::class, [
+            ->add('lieuxSorties', EntityType::class, [
                 'label' => 'Lieu: ',
-                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped'=>false,
+                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
-            ->add('rue',EntityType::class, [
+            ->add('rue', EntityType::class, [
                 'label' => 'Rue: ',
-                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped'=>false,
+                'class' => Lieu::class, 'choice_label' => 'rue', 'mapped' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
-            ->add('codePostal',EntityType::class, [
+            ->add('codePostal', EntityType::class, [
                 'label' => 'Code postal: ',
-                'class' => Ville::class, 'choice_label' => 'codePostal', 'mapped'=>false,
+                'class' => Ville::class, 'choice_label' => 'codePostal', 'mapped' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
-            ->add('latitude',EntityType::class, [
+            ->add('latitude', EntityType::class, [
                 'label' => 'Latitude: ',
-                'class' => Lieu::class, 'choice_label' => 'latitude', 'mapped'=>false,
+                'class' => Lieu::class, 'choice_label' => 'latitude', 'mapped' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
-            ->add('longitude',EntityType::class, [
+            ->add('longitude', EntityType::class, [
                 'label' => 'Longitude: ',
-                'class' => Lieu::class, 'choice_label' => 'longitude', 'mapped'=>false,
+                'class' => Lieu::class, 'choice_label' => 'longitude', 'mapped' => false,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('Enregistrer', SubmitType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control button button1'
                 ]
             ])
-
             ->add('Publier', SubmitType::class, [
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => 'form-control button button2'
                     ]
                 ]
             )
-
             ->add('Supprimer', SubmitType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control button button4'
                 ]
             ])
-
             ->add('Annuler', SubmitType::class, [
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control button button3'
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

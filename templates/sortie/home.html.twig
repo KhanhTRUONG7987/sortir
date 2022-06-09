@@ -2,33 +2,32 @@
 
 {% block title %}Ceci est la page d'accueil{% endblock %}
 
-
-
 {% block main %}
-    <link rel="stylesheet" href="{{ asset('css/sortie.css') }}">
+    <link rel="stylesheet" href="{{ asset('.Css/style.css') }}">
 
     <div id="Header">
 
         <div id="Date">
-            <p>Date du Jour:  {{"now"|date("d/m/Y") }} </p>
+            <p>Date du Jour: {{ "now"|date("d/m/Y") }} </p>
         </div>
 
         <div id="prenomParticipant">
-            <p>Participant: {{ app.user.prenom ?? 'Vous n\'etes plus connecté'  }} {{ app.user.nom ?? '...' }} </p>
+            <p>Participant: {{ app.user.prenom ?? 'Vous n\'etes plus connecté' }} {{ app.user.nom ?? '...' }} </p>
         </div>
     </div>
 
 
     <div id="filtre">
-        <h2>Filtrer les sorties</h2>
-            {#Afficher le formulaire#}
-            {{form_start(searchFiltersForm)}}
-            {{form_row(searchFiltersForm.campus)}}
-            {{form_row(searchFiltersForm.motCles)}}
-            {{form_row(searchFiltersForm.dateHeureDebut)}}
-            {{form_row(searchFiltersForm.dateLimiteInscription)}}
+        <h1>Filtrer les sorties</h1>
+        <br>
+        {# Afficher le formulaire #}
+        {{ form_start(searchFiltersForm) }}
+        {{ form_row(searchFiltersForm.campus) }}
+        {{ form_row(searchFiltersForm.motCles) }}
+        {{ form_row(searchFiltersForm.dateHeureDebut) }}
+        {{ form_row(searchFiltersForm.dateLimiteInscription) }}
         <div id="filtre2">
-            {{form_end(searchFiltersForm)}}
+            {{ form_end(searchFiltersForm) }}
         </div>
     </div>
 
@@ -47,28 +46,28 @@
             </tr>
             </thead>
             <TBODY>
-            {%for sortie in listSortie%}
+            {% for sortie in listSortie %}
                 <tr class="table-secondary">
-                    <td>{{sortie.nom}}</td>
-                    <td>{{sortie.dateHeureDebut|date("m/d/Y")}}</td>
-                    <td>{{sortie.dateLimiteInscription|date("m/d/Y")}}</td>
-                    <td>{{sortie.nbinscriptionsMax}} / {{sortie.nbinscriptionsMax}}</td>
-                    <td>{{sortie.etatSorties.libelle}}</td>
+                    <td>{{ sortie.nom }}</td>
+                    <td>{{ sortie.dateHeureDebut|date("m/d/Y") }}</td>
+                    <td>{{ sortie.dateLimiteInscription|date("m/d/Y") }}</td>
+                    <td>{{ sortie.nbinscriptionsMax }} / {{ sortie.nbinscriptionsMax }}</td>
+                    <td>{{ sortie.etatSorties.libelle }}</td>
                     <td>...</td>
                     <td>
-                        {#{{path('profil_participant', {'sortie.organisateur.pseudo'}) }}#}
-                        <a href=" {{path('profil_participant', {'id': sortie.organisateur.pseudo}) }}">{{sortie.organisateur.pseudo}}</a>
+                        {# {{path('profil_participant', {'sortie.organisateur.pseudo'}) }} #}
+                        <a href=" {{ path('profil_participant', {'id': sortie.organisateur.pseudo}) }}">{{ sortie.organisateur.pseudo }}</a>
                     </td>
                     <td>
-                        <a href="{{ path('sortie_afficherSortie', {'id': sortie.id}) }}" >Afficher</a>
-                        {#<a onclick="show" >Afficher</a>#}
+                        <a href="{{ path('sortie_afficherSortie', {'id': sortie.id}) }}">Afficher</a>
+                        {# <a onclick="show" >Afficher</a> #}
                     </td>
                 </tr>
-            {%endfor%}
+            {% endfor %}
             </TBODY>
         </table>
 
-        <button class="btn btn-lg btn-primary" type="button" onclick="window.location.href='sortie/createSortie'" >
+        <button class="btn btn-lg btn-primary" type="button" onclick="window.location.href='sortie/createSortie'">
             Nouvelle Sortie
         </button>
     </div>

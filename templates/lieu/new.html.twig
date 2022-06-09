@@ -3,40 +3,40 @@
 {% block title %}New Lieu{% endblock %}
 
 {% block main %}
-<div class="container">
-    <br>
-    {{ form_start(form) }}
-    <div class="entry-title" style="color: #0d5470">
-        <h1>Créer un lieu</h1>
-    </div>
-    <div class="row g-3 aligncenter">
-        <div class="col">
-            {{ form_row(form.villeLieux, {'attr': {'placeholder': "Ville"}}) }}
+    <div class="container">
+        <br>
+        {{ form_start(form) }}
+        <div class="entry-title" style="color: #0d5470">
+            <h1>Créer un lieu</h1>
         </div>
-        <div class="col">
-            {{ form_row(form.rue, {'attr': {'placeholder': "Rue"}}) }}
+        <div class="row g-3 aligncenter">
+            <div class="col">
+                {{ form_row(form.villeLieux, {'attr': {'placeholder': "Ville"}}) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.rue, {'attr': {'placeholder': "Rue"}}) }}
+            </div>
         </div>
-    </div>
-    <div class="row g-3 aligncenter">
-        <div class="col">
-            {{ form_row(form.nom, {'attr': {'placeholder': "Nom du lieu"}}) }}
+        <div class="row g-3 aligncenter">
+            <div class="col">
+                {{ form_row(form.nom, {'attr': {'placeholder': "Nom du lieu"}}) }}
+            </div>
+            <div class="col">
+                {{ form_row(form.latitude, {'attr': {'placeholder': "Latitude"}}) }}
+            </div>
         </div>
-        <div class="col">
-            {{ form_row(form.latitude, {'attr': {'placeholder': "Latitude"}}) }}
-        </div>
-    </div>
-    <div class="row g-3 aligncenter">
-        <div class="col">
+        <div class="row g-3 aligncenter">
+            <div class="col">
 
+            </div>
+            <div class="col">
+                {{ form_row(form.longitude, {'attr': {'placeholder': "Longitude"}}) }}
+            </div>
         </div>
-        <div class="col">
-            {{ form_row(form.longitude, {'attr': {'placeholder': "Longitude"}}) }}
-        </div>
+        <br>
+
+        {{ include('lieu/_form.html.twig') }}
+
+        <a href="{{ path('lieu_index') }}">back</a>
     </div>
-    <br>
-
-    {{ include('lieu/_form.html.twig') }}
-
-    <a href="{{ path('lieu_index') }}">back</a>
-</div>
 {% endblock %}

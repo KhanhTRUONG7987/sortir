@@ -3,47 +3,48 @@
 {% block title %}Hello SortieController!{% endblock %}
 
 {% block main %}
-    <link rel="stylesheet" href="{{ asset('css/AfficherSortie.css') }}">
-<div id="AfficherSortieForm">
-    <h1>Afficher une sortie</h1>
+    <div class="cssForm">
+        <h1>Afficher une sortie</h1>
 
-    {{ form_start(afficherUneSortie) }}
+        {{ form_start(afficherUneSortie) }}
 
-    <div id="AfficherSortieFormGauche">
-        {{ form_row(afficherUneSortie.nom)}}
+        <div id="AfficherSortieFormGauche">
+            {{ form_row(afficherUneSortie.nom) }}
 
-        {{ form_row(afficherUneSortie.dateHeureDebut) }}
+            {{ form_row(afficherUneSortie.dateHeureDebut) }}
 
-        {{ form_row(afficherUneSortie.dateLimiteInscription) }}
+            {{ form_row(afficherUneSortie.dateLimiteInscription) }}
 
-        {{ form_row(afficherUneSortie.nbinscriptionsMax) }}
+            {{ form_row(afficherUneSortie.nbinscriptionsMax) }}
 
-        {{ form_row(afficherUneSortie.duree) }}
+            {{ form_row(afficherUneSortie.duree) }}
 
-        {{ form_row(afficherUneSortie.infosSortie)}}
+            {{ form_row(afficherUneSortie.infosSortie) }}
+        </div>
+
+        <div id="AfficherSortieFormDroite">
+            {{ form_row(afficherUneSortie.campus) }}
+
+            {{ form_row(afficherUneSortie.lieuxSorties) }}
+
+            {{ form_row(afficherUneSortie.rue) }}
+
+            {{ form_row(afficherUneSortie.codePostal) }}
+
+            {{ form_row(afficherUneSortie.latitude) }}
+
+            {{ form_row(afficherUneSortie.longitude) }}
+
+            {{ form_end(afficherUneSortie) }}
+        </div>
+        <a href="{{ path('home') }}">
+            <button type="reset" class="btn btn-secondary">Retour</button>
+        </a>
+
+        <section id="lstUsersInscrits">
+            <table>
+
+            </table>
+        </section>
     </div>
-
-    <div id="AfficherSortieFormDroite">
-        {{ form_row(afficherUneSortie.campus) }}
-
-        {{ form_row(afficherUneSortie.lieuxSorties) }}
-
-        {{ form_row(afficherUneSortie.rue) }}
-
-        {{ form_row(afficherUneSortie.codePostal) }}
-
-        {{ form_row(afficherUneSortie.latitude) }}
-
-        {{ form_row(afficherUneSortie.longitude) }}
-
-        {{ form_end(afficherUneSortie) }}
-    </div>
-    <a href="{{path('home')}}"> <button type="reset" class="btn btn-secondary" >Retour</button></a>
-
-    <section id="lstUsersInscrits">
-        <table>
-
-        </table>
-    </section>
-</div>
 {% endblock %}

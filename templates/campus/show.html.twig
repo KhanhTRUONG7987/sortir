@@ -3,15 +3,17 @@
 {% block title %}Campus{% endblock %}
 
 {% block main %}
-<div class="example-wrapper">
-    <h1>Afficher un campus</h1>
+    <div class="cssForm">
+        <div class="example-wrapper">
+            <h1>Afficher un campus</h1>
 
-    {{ form_start(afficherUnCampus) }}
+            {{ form_start(afficherUnCampus) }}
 
-    {{ form_row(afficherUnCampus.nom)}}
+            {{ form_row(afficherUnCampus.nom) }}
 
-    <a href="{{ path('campus_index') }}">back</a>
+            <a href="{{ path('campus_index') }}">back</a>
 
-    {{ include('campus/_delete_form.html.twig') }}
-</div>
+            {{ include('campus/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

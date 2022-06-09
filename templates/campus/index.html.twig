@@ -4,43 +4,45 @@
 
 {% block main %}
     <br>
-    <div class="container">
-        <h1>Gérer les campus</h1>
-        <br>
-        <div>
-            <h4>Filtrer les sites</h4>
-            <form id="form_search" action="{{ path('search') }}">
-                <a>Le nom contient: </a>
-                <label>
-                    <input type="text" class="form-control" placeholder="Search" name="find">
-                </label>
-                <br>
-                <button type="submit">Rechercher</button>
-            </form>
-        </div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Campus</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for campus in campuses %}
+    <div class="cssForm">
+        <div class="container">
+            <h1>Gérer les campus</h1>
+            <br>
+            <div>
+                <h4>Filtrer les sites</h4>
+                <form id="form_search" action="{{ path('search') }}">
+                    <a>Le nom contient: </a>
+                    <label>
+                        <input type="text" class="form-control" placeholder="Search" name="find">
+                    </label>
+                    <br>
+                    <button type="submit">Rechercher</button>
+                </form>
+            </div>
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>{{ campus.nom }}</td>
-                    <td>
-                        <a href="{{ path('campus_edit', {'id': campus.id}) }}">Modifier</a>
-                    </td>
+                    <th>Campus</th>
+                    <th>Actions</th>
                 </tr>
-            {% else %}
-            {% endfor %}
+                </thead>
+                <tbody>
+                {% for campus in campuses %}
+                    <tr>
+                        <td>{{ campus.nom }}</td>
+                        <td>
+                            <a href="{{ path('campus_edit', {'id': campus.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                {% endfor %}
                 <tr>
                     <td>
                         <a href="{{ path('campus_new') }}">Ajouter</a>
                     </td>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}

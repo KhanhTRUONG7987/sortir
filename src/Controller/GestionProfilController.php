@@ -39,54 +39,17 @@ class GestionProfilController extends AbstractController
                 $hash = $passwordHashed->hashPassword($user, $nouveauMDP);
                 $this->getUser()->setPassword($hash);
                 $this->addFlash("success", "Votre mot de passe a été modifié avec succès");
-
             }
 
             $userRepository->add($user, true);
             $this->addFlash("success", "Votre profil a été modifié avec succès");
             return $this->redirectToRoute('monprofil');
-
-
         }
 
 
         return $this->render('gestion_profil/gestionProfil.html.twig', ['nouveauProfilParticipantForm' => $nouveauProfilParticipantForm->createView()
             ,]);
     }
-
-//    #[Route('/monprofil/edit_password', name: 'edit_password')]
-//    public function modifMotDePasse(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $passwordHashed): Response
-//    {
-//        // récupération du mot de passe
-//
-//        /**
-//         * @var User $user
-//         */
-//        $user = $this->getUser();
-//
-//        $nouveauProfilParticipantForm = $this -> createForm(MonProfilType::class, $this->getUser());
-//        $nouveauProfilParticipantForm->handleRequest($request);
-//
-//        if ($nouveauProfilParticipantForm -> isSubmitted() && $nouveauProfilParticipantForm-> isValid()){
-//
-//            //hashage du nouveau mot de passe
-//            $hash = $passwordHashed->hashPassword($user, $nouveauProfilParticipantForm->get('password')->getData());
-//            $this->getUser()->setPassword($hash);
-//
-//            $userRepository->add($user, true);
-//
-//
-//            $this->addFlash('sucess', 'Mot de passe modifié avec succès !');
-//            $userRepository->refresh($this->getUser());
-//
-//            return $this ->redirectToRoute('monprofil');
-//
-//        }
-//
-//        return $this->render('gestion_profil/gestionProfil.html.twig',
-//            ['nouveauProfilParticipantForm' => $nouveauProfilParticipantForm->createView(),
-//            ]);
-//    }
 
     #[Route('/monprofil/photo', name: 'photo')]
     public function chargerPhoto(Request $request, UserRepository $userRepository,): Response
@@ -98,9 +61,5 @@ class GestionProfilController extends AbstractController
         return $this->render('gestion_profil/gestionProfil.html.twig', array(
             'profilPhotoForm' => $profilPhotoForm->createView(),
         ));
-
-
     }
-
-
 }

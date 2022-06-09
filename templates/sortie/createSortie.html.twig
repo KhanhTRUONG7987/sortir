@@ -1,9 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    {# <link rel="stylesheet" href="{{ asset('.Css/style.css') }}"> #}
-
-    <div id="CreateSortieForm">
+    <div class="cssForm">
         <div class="container">
             {{ form_start(createSortieForm) }}
             <div class="entry-title" style="color: #0d5470">
@@ -78,14 +76,14 @@
                 </div>
             </div>
             <br><br>
-            <div class="row g-3 container-fluid">
-                <div class="col">
+            <div class="row g-3 container">
+                <div class="col" button1 button>
                     {{ form_row(createSortieForm.Enregistrer) }}
                 </div>
-                <div class="col ">
+                <div class="col" button button2>
                     {{ form_row(createSortieForm.Publier) }}
                 </div>
-                <div class="col">
+                <div class="col" button button3>
                     {{ form_row(createSortieForm.Annuler) }}
                 </div>
             </div>

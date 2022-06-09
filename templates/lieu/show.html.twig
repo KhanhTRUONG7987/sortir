@@ -3,19 +3,19 @@
 {% block title %}Lieu{% endblock %}
 
 {% block main %}
-<div class="example-wrapper">
-    <h1>Afficher un lieu de sortie</h1>
+    <div class="example-wrapper">
+        <h1>Afficher un lieu de sortie</h1>
 
-    {{ form_start(afficherUnLieu) }}
+        {{ form_start(afficherUnLieu) }}
 
-    {{ form_row(afficherUnLieu.villeLieux)}}
-    {{ form_row(afficherUnLieu.nom)}}
-    {{ form_row(afficherUnLieu.rue)}}
-    {{ form_row(afficherUnLieu.longitude)}}
-    {{ form_row(afficherUnLieu.latitude) }}
+        {{ form_row(afficherUnLieu.villeLieux) }}
+        {{ form_row(afficherUnLieu.nom) }}
+        {{ form_row(afficherUnLieu.rue) }}
+        {{ form_row(afficherUnLieu.longitude) }}
+        {{ form_row(afficherUnLieu.latitude) }}
 
-    <a href="{{ path('lieu_index') }}">back</a>
+        <a href="{{ path('lieu_index') }}">back</a>
 
-    {{ include('lieu/_delete_form.html.twig') }}
-</div>
+        {{ include('lieu/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

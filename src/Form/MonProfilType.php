@@ -27,7 +27,6 @@ class MonProfilType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom :',
                 'required' => false,
@@ -35,7 +34,6 @@ class MonProfilType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('telephone', TextType::class, [
                 'label' => 'Téléphone :',
                 'required' => false,
@@ -43,7 +41,6 @@ class MonProfilType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('email', EmailType::class, [
                 'label' => 'Email :',
                 'required' => false,
@@ -51,13 +48,12 @@ class MonProfilType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe ne correspond pas.',
                 'options' => ['attr' => ['class' => 'password']],
                 'required' => false,
-                'mapped'=>false,
+                'mapped' => false,
                 'first_options' => ['label' => 'Mot de passe'],
                 'attr' => [
                     'class' => 'form-control'
@@ -68,40 +64,30 @@ class MonProfilType extends AbstractType
                     ]
                 ],
             ])
-
-
-
             ->add('estRattache', EntityType::class, [
 
                 'label' => 'Campus :',
-                'choice_label'=> "nom",
+                'choice_label' => "nom",
                 'class' => Campus::class,
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
-
             ->add('enregistrer', SubmitType::class, [
                 'label' => 'Enregistrer',
                 'attr' => [
                     'class' => 'btn btn-primary',
                 ]
-            ])
-
-
-
-        ;
+            ]);
 
     }
 
 
-
-
     public function configureOptions(OptionsResolver $resolver): void
-        {
-            $resolver->setDefaults([
+    {
+        $resolver->setDefaults([
 
-            ]);
-        }
+        ]);
+    }
 
 }

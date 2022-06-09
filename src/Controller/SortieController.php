@@ -34,33 +34,16 @@ class SortieController extends AbstractController
         $sortie->setOrganisateur($this->getUser());
 
 
-
         //######formulaire#######
         $createSortieForm = $this->createForm(CreateSortieType::class, $sortie);
         $createSortieForm->handleRequest($request);
         //#######################
 
         if ($createSortieForm->isSubmitted() && $createSortieForm->isValid()) {
-
-//            //### Publier ###
-//            if(){
-//                $etat = $etatRepository->findOneBy(['libelle' => 'Ouverte']);
-//                $sortie->setEtatSorties($etat);
-//            }
-//            //### Enregistrer ###
-//            if(){
-//                $etat = $etatRepository->findOneBy(['libelle' => 'En creation']);
-//                $sortie->setEtatSorties($etat);
-//            }
-//
-//            //############
-
             $sortieRepository->add($sortie, true);
             $this->addFlash('success', 'Sortie créée');
             return $this->redirect($this->generateUrl('home'));
         }
-
-
 
         //response
         return $this->render('sortie/createSortie.html.twig', [

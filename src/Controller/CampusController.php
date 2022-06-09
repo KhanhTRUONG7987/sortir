@@ -34,9 +34,9 @@ class CampusController extends AbstractController
     #[Route('/', name: 'search', methods: ['GET'])]
     public function searchAction(Request $request, CampusRepository $campusRepository)
     {
-        $value =  $request->get("find");
+        $value = $request->get("find");
         //implement your search here,
-        $result = $campusRepository->findBySearch(array("find"=>$value));
+        $result = $campusRepository->findBySearch(array("find" => $value));
         //Here you can return your data in JSON format or in a twig template
     }
 
@@ -88,7 +88,7 @@ class CampusController extends AbstractController
     #[Route('/{id}', name: 'campus_delete', methods: ['POST'])]
     public function delete(Request $request, Campus $campus, CampusRepository $campusRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$campus->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $campus->getId(), $request->request->get('_token'))) {
             $campusRepository->remove($campus, true);
         }
 

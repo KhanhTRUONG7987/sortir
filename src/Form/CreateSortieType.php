@@ -113,17 +113,17 @@ class CreateSortieType extends AbstractType
             ])
             ->add('Enregistrer', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-primary',
+                    'class' => 'form-control button button1',
                 ]
             ])
             ->add('Publier', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-success'
+                    'class' => 'form-control button button2'
                 ]
             ])
             ->add('Annuler', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-warning'
+                    'class' => 'form-control button button3'
                 ]
             ]);
     }

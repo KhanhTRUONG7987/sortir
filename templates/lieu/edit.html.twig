@@ -3,18 +3,18 @@
 {% block title %}Edit Lieu{% endblock %}
 
 {% block main %}
-<div class="example-wrapper">
-    <h1>Modifier un lieu de sortie</h1>
+    <div class="example-wrapper">
+        <h1>Modifier un lieu de sortie</h1>
 
-    {{ form_start(form) }}
+        {{ form_start(form) }}
 
-    {{ form_row(form.villeLieux)}}
-    {{ form_row(form.nom)}}
-    {{ form_row(form.rue)}}
-    {{ form_row(form.longitude)}}
-    {{ form_row(form.latitude) }}
+        {{ form_row(form.villeLieux) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.rue) }}
+        {{ form_row(form.longitude) }}
+        {{ form_row(form.latitude) }}
 
-    <a href="{{ path('lieu_index') }}">back</a>
-    {{ include('lieu/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-</div>
+        <a href="{{ path('lieu_index') }}">back</a>
+        {{ include('lieu/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+    </div>
 {% endblock %}

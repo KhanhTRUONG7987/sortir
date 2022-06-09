@@ -40,9 +40,9 @@ class VilleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Ville[] Returns an array of Ville objects
      * @param string $value
      * @param $ville
+     * @return Ville[] Returns an array of Ville objects
      * @throws \Exception
      */
     public function findBySearch($value): array
@@ -60,18 +60,17 @@ class VilleRepository extends ServiceEntityRepository
             ->getQuery();
         try {
             return $query->getResult();
+        } catch (\Exception $e) {
+            throw new \Exception('problème ' . $e->getMessage() . $e->getFile());
         }
-        catch(\Exception $e) {
-            throw new \Exception('problème '. $e->getMessage(). $e->getFile());
     }
-    }
+
     public function findOneBySomeField($value): ?Ville
     {
         return $this->createQueryBuilder('v')
             ->andWhere('v.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 }

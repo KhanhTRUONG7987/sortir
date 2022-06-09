@@ -4,22 +4,24 @@
 
 {% block main %}
     <br>
-<div class="container">
-    {{ form_start(form) }}
-    <div class="entry-title" style="color: #0d5470">
-        <h1>Créer une ville</h1>
-    </div>
-    <div class="row g-3 aligncenter">
-        <div class="col">
-            {{ form_row(form.nom, {'attr': {'placeholder': "Nom de ville"}}) }}
-        </div>
-        <div class="col">
-            {{ form_row(form.codePostal, {'attr': {'placeholder': "Code Postal"}}) }}
-        </div>
-    </div>
-    <br>
-    {{ include('ville/_form.html.twig') }}
+    <div class="cssForm">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="entry-title" style="color: #0d5470">
+                <h1>Créer une ville</h1>
+            </div>
+            <div class="row g-3 aligncenter">
+                <div class="col">
+                    {{ form_row(form.nom, {'attr': {'placeholder': "Nom de ville"}}) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.codePostal, {'attr': {'placeholder': "Code Postal"}}) }}
+                </div>
+            </div>
+            <br>
+            {{ include('ville/_form.html.twig') }}
 
-    <a href="{{ path('ville_index') }}">back</a>
-</div>
+            <a href="{{ path('ville_index') }}">back</a>
+        </div>
+    </div>
 {% endblock %}

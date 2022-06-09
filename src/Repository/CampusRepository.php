@@ -40,9 +40,9 @@ class CampusRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Campus[] Returns an array of Campus objects
      * @param string $value
      * @param $campus
+     * @return Campus[] Returns an array of Campus objects
      * @throws \Exception
      */
     public function findBySearch($value, Campus $campus): array
@@ -58,19 +58,17 @@ class CampusRepository extends ServiceEntityRepository
             ->getQuery();
         try {
             return $query->getResult();
-        }
-        catch(\Exception $e) {
-            throw new \Exception('problème '. $e->getMessage(). $e->getFile());
+        } catch (\Exception $e) {
+            throw new \Exception('problème ' . $e->getMessage() . $e->getFile());
         }
     }
 
-   public function findOneBySomeField($value): ?Campus
-   {
+    public function findOneBySomeField($value): ?Campus
+    {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getOneOrNullResult();
     }
 }

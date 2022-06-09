@@ -26,8 +26,7 @@ class AfficherParticipantsType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
-            ->add('prenom',TextType::class, [
+            ->add('prenom', TextType::class, [
                 //'class' => User::class,
                 //'choice_label' => 'prenom',
                 //'mapped' => false,
@@ -37,19 +36,16 @@ class AfficherParticipantsType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-
-            ->add('telephone',TextType::class, [
+            ->add('telephone', TextType::class, [
                 //'class' => User::class,
                 //'choice_label' => 'telephone',
                 //'mapped' => false,
                 'label' => 'Téléphone :',
                 'required' => false,
                 'attr' => [
-        'class' => 'form-control'
-    ]
+                    'class' => 'form-control'
+                ]
             ])
-
-
             ->add('email', EmailType::class, [
 
                 'label' => 'Email :',
@@ -60,17 +56,15 @@ class AfficherParticipantsType extends AbstractType
 
 
             ])
-
             ->add('estRattache', EntityType::class, [
 
                 'label' => 'Campus :',
-                'choice_label'=> "nom",
+                'choice_label' => "nom",
                 'class' => Campus::class,
                 'attr' => [
                     'class' => 'form-control'
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,26 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent()}} - Mon Profil{% endblock %}
+{% block title %}{{ parent() }} - Mon Profil{% endblock %}
 
 {% block main %}
-    <link rel="stylesheet" href="{{ asset('css/Profil.css') }}">
+    {# <link rel="stylesheet" href="{{ asset('.Css/style.css') }}"> #}
 
-    <div id="ProfilParticipant">
+    <div class="cssUser">
+        <div class="container">
+            <h1>Mon profil</h1>
 
-        <h2>Mon profil</h2>
+            {# affichage du formulaire #}
+            {{ form_start(nouveauProfilParticipantForm) }}
+            {{ form_row(nouveauProfilParticipantForm.prenom) }}
+            <br>
+            {{ form_row(nouveauProfilParticipantForm.nom) }}
+            <br>
+            {{ form_row(nouveauProfilParticipantForm.telephone) }}
+            <br>
+            {{ form_row(nouveauProfilParticipantForm.password) }}
+            <br>
+            {{ form_row(nouveauProfilParticipantForm.email) }}
+            <br>
+            {{ form_row(nouveauProfilParticipantForm.estRattache) }}
+            <br>
+            {{ form_end(nouveauProfilParticipantForm) }}
 
-        {# affichage du formulaire #}
-        {{form_start(nouveauProfilParticipantForm)}}
-        {{form_row(nouveauProfilParticipantForm.prenom)}}
-        {{form_row(nouveauProfilParticipantForm.nom)}}
-        {{form_row(nouveauProfilParticipantForm.telephone)}}
-        {{form_row(nouveauProfilParticipantForm.password)}}
-        {{form_row(nouveauProfilParticipantForm.email)}}
-        {{form_row(nouveauProfilParticipantForm.estRattache)}}
-
-        {{form_end(nouveauProfilParticipantForm)}}
-
-        <a href="{{path('home')}}"> <button type="reset" class="btn btn-secondary" >Annuler</button></a>
+            <a href="{{ path('home') }}">
+                <button type="reset" class="btn btn-secondary">Annuler</button>
+            </a>
+            <br>
+        </div>
     </div>
 
 

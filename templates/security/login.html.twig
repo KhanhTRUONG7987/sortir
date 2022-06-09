@@ -3,7 +3,6 @@
 {% block title %}Log in!{% endblock %}
 
 {% block main %}
-    <link rel="stylesheet" href="{{ asset('css/login.Css') }}">
     <form method="post">
 
         {% if error %}
@@ -16,16 +15,23 @@
             </div>
         {% endif %}
 
-        <div id="formLogin">
+        <div class="cssUser">
             <h1 class="h3 mb-3 font-weight-normal">Connexion: </h1>
             <label for="inputEmail">E-mail </label>
 
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+                   autocomplete="email" required autofocus>
+
+            <br>
+
             <label for="inputPassword">Mot De Passe </label>
 
-            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            <input type="password" name="password" id="inputPassword" class="form-control"
+                   autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <br>
 
             <div class="checkbox mb-3">
                 <label>
